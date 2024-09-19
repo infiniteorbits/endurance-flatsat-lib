@@ -16,6 +16,7 @@ classifiers = [
 dynamic = ["version"]
 requires-python = ">=3.12"
 dependencies = [
+    "yamcs-client >= 1.10.0",
 ]
 
 [project.urls]
