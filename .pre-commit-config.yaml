@@ -32,14 +32,14 @@ repos:
         args: ['--maxkb=500']
     # Verify that pyproject.toml is well formed
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.19
+    rev: v0.20.2
     hooks:
       - id: validate-pyproject
         name: Validate pyproject.toml
         description: Verify that pyproject.toml adheres to the established schema.
     # Verify that GitHub workflows are well formed
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.3
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -95,7 +95,7 @@ repos:
         language_version: python3.12
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.5
+    rev: v0.6.8
     hooks:
       - id: ruff
         name: Lint code using ruff; sort and organize imports 
@@ -103,7 +103,7 @@ repos:
         args: ["--fix"]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.5
+    rev: v0.6.8
     hooks:
       - id: ruff-format
         name: Format code using ruff

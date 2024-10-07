@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath("../src/"))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "endurance-flatsat-lib"
-copyright = "2023, Romain Lhoussaine"
+copyright = "2024, Romain Lhoussaine"
 author = "Romain Lhoussaine"
 release = version("endurance-flatsat-lib")
 # for example take major/minor
