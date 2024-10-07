@@ -48,4 +48,4 @@ Notes:
    Home page <self>
    API Reference <autoapi/index>
    Notebooks <notebooks>
-   Flatsat <flatsat>
+   Flatsat <Flatsat>

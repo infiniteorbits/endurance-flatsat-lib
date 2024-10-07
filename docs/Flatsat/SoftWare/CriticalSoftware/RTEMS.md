@@ -2,7 +2,7 @@
 
 ---
 
-## Setup Instructions
+# Setup Instructions
 
 This is split into two steps:  
 1. First, GRMON3 and FlashPro5 need to be set up so we can communicate with the board.  
@@ -10,7 +10,7 @@ This is split into two steps:
 
 ---
 
-## GRMON3 Setup
+# GRMON3 Setup
 
 GRMON3 can be downloaded from Cobham Gaisler's webpage (username and password are attached to the hardware license key): [GRMON3 Download](https://www.gaisler.com/index.php/downloads/debug-tools).
 
@@ -24,7 +24,7 @@ PATH="$PATH:/home/buildbot/grmon-pro-3.2.17/linux/bin64"
 
 ---
 
-## FlashPro5 Setup
+# FlashPro5 Setup
 
 To use the FlashPro5 programmer, you need to add a rule to `udev` so that it can be used without root privileges. On Ubuntu, this can be done by following these steps:
 
@@ -78,7 +78,7 @@ grmon -ftdi -jtagserial 01541KRT
 
 ---
 
-## RTEMS SDK Installation
+# RTEMS SDK Installation
 
 1. Extract `rtems-noel-1.0.4-2022-07-05-14-00-toolchain-ubuntu-22.04.tar.bz2` to your home folder. *Drive : [Nano-HPM-zip](https://drive.google.com/file/d/1Ny_-3nRZRY5-i6MD_pVNblY0_wXvLkzy/view?usp=drive_link)*
 2. Add its bin folder to the system `PATH` variable. For example, if you extracted it under `/home/buildbot/rtems-noel-1.0.4`, you can add:

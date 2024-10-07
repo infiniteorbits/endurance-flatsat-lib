@@ -1,6 +1,5 @@
-
 ---
-## Installation 
+# Installation 
 Follow these steps to install GRMON. Detailed information can be found further down. 
 1. **Extract** the archive 
 2. **Install** the Sentinel LDK Runtime (GRMON Pro version) 

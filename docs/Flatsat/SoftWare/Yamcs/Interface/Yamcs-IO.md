@@ -7,7 +7,7 @@
 mvn install
 ```
 
-### ygw-io
+# ygw-io
 *Requirements: Rust*
 
 1. Navigate to the ygw-io directory.
@@ -16,7 +16,7 @@ mvn install
 ```
 cargo build
 ```
-### ygw-can-ts
+# ygw-can-ts
 *Requirements: Rust*
 
 1. Navigate to the ygw-io directory.
@@ -26,7 +26,7 @@ cargo build
 cargo build
 ```
 
-## Running
+# Running
 *Requirements: [[Virtual Can]]*
 To start both the Yamcs server and the gateway, execute the following scripts in the root directory:
 

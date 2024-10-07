@@ -1,5 +1,5 @@
 *Ressources : [CAN interfaces](https://netmodule-linux.readthedocs.io/en/latest/howto/can.html)*
-## Can
+# Can
 If you want to use a real CAN interface (instead of a virtual one like `vcan0`), you can follow these steps:
 
 1. **Bring up the CAN interface** (replace `can0` with your actual CAN device name):

@@ -3,7 +3,7 @@
 *Related to : [[GRMON]]*
 
 ---
-## Installation
+# Installation
 
 1.  `grmon -ftdi -jtagcable 7 -ucli 5 (Select the appropriate JTAG cable, ucli 5 redirects the uart to the terminal for prints)`
 2.  `load mission_sw_v_0_1.elf (loads the elf into RAM)`
