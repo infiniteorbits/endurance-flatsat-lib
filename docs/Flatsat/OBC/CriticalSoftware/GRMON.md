@@ -1,4 +1,3 @@
----
 # Installation 
 Follow these steps to install GRMON. Detailed information can be found further down. 
 1. **Extract** the archive 

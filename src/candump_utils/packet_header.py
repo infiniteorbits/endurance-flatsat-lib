@@ -28,23 +28,23 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
                   or None if the message is invalid or an error occurs.
 
     Parsed fields in the dictionary:
-    - "prefix": First 8 bits of the message, used as a prefix.
-    - "version_number": Version number (3 bits).
-    - "type_tmtc": Type of message (TM or TC).
-    - "str_type": Human-readable string for TM/TC type.
-    - "data_field_header_flag": Data field header flag (1 bit).
-    - "apid": Application Process Identifier (11 bits).
-    - "apid_sys": System identifier corresponding to the APID (from lookup table).
-    - "grouping_flags": Grouping flags (2 bits), representing the sequence flags.
-    - "Sequence flag": Human-readable sequence flag (from lookup table).
-    - "source_sequence_count": Source sequence count (14 bits).
-    - "packet_length": Length of the packet (16 bits).
-    - "counter": Message counter (7 bits).
-    - "fsb": First Segment Bit (1 bit), indicating whether the message is the first in a sequence.
+        - "prefix": First 8 bits of the message, used as a prefix.
+        - "version_number": Version number (3 bits).
+        - "type_tmtc": Type of message (TM or TC).
+        - "str_type": Human-readable string for TM/TC type.
+        - "data_field_header_flag": Data field header flag (1 bit).
+        - "apid": Application Process Identifier (11 bits).
+        - "apid_sys": System identifier corresponding to the APID (from lookup table).
+        - "grouping_flags": Grouping flags (2 bits), representing the sequence flags.
+        - "Sequence flag": Human-readable sequence flag (from lookup table).
+        - "source_sequence_count": Source sequence count (14 bits).
+        - "packet_length": Length of the packet (16 bits).
+        - "counter": Message counter (7 bits).
+        - "fsb": First Segment Bit (1 bit), whether the message is the first in a sequence.
 
     Raises:
-    ValueError: If the line cannot be parsed as a binary integer.
-    IndexError: If the line does not contain enough data to be parsed.
+        ValueError: If the line cannot be parsed as a binary integer.
+        IndexError: If the line does not contain enough data to be parsed.
     """
     try:
         # Split the line into parts

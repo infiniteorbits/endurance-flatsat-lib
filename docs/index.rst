@@ -47,5 +47,4 @@ Notes:
 
    Home page <self>
    API Reference <autoapi/index>
-   Notebooks <notebooks>
-   Flatsat <Flatsat>
+   Flatsat <Flatsat/index-flatsat>
