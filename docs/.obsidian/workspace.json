@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "d17050b8829a5f9e",
+    "type": "split",
+    "children": [
+      {
+        "id": "22021b6743e2ceb8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79544d3af8ac7e70",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "obc/Obc_software_installations.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c75a36628cc1d811",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b7c7319d517193e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e25f0cdf274e530d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "aa5fb209f7e0f8fc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "28a5a7ced26d48e6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d1661a58cb6c2fad",
+    "type": "split",
+    "children": [
+      {
+        "id": "c603211109a4f302",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a28caab58e5a0ee",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "obc/Obc_software_installations.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "72e29f948c283e82",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "obc/Obc_software_installations.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4cc7910896722d62",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "495a83814c84569c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "obc/Obc_software_installations.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false
+    }
+  },
+  "active": "79544d3af8ac7e70",
+  "lastOpenFiles": [
+    "autoapi/index.rst",
+    "autoapi/yamcs_flatsat_tests/end_avi_pln_software/index.rst",
+    "autoapi/yamcs_flatsat_tests/end_avi_pln_software",
+    "autoapi/yamcs_flatsat_utils/command_processor/index.rst",
+    "autoapi/yamcs_flatsat_utils/command_processor",
+    "autoapi/yamcs_flatsat_tests/end_avi_pln_tmtc/index.rst",
+    "autoapi/yamcs_flatsat_tests/end_avi_pln_tmtc",
+    "autoapi/yamcs_flatsat_utils/yamcs_interface/index.rst",
+    "autoapi/yamcs_flatsat_utils/yamcs_interface",
+    "autoapi/yamcs_flatsat_utils/mdb_utils/index.rst",
+    "autoapi/yamcs_flatsat_utils/mdb_utils",
+    "yamcs/yamcs-client.md",
+    "yamcs/yamcs-interface.md",
+    "yamcs-client/Force APID.md",
+    "yamcs/Launch-CheckoutSystem.md",
+    "yamcs/Force APID.md",
+    "yamcs-interface/Launch-CheckoutSystem.md",
+    "Sans titre.md",
+    "obc/Obc_software_installations.md",
+    "Flatsat/Yamcs/Virtual Can.md",
+    "Flatsat/OBC/CriticalSoftware/OBC.md",
+    "Flatsat/OBC/CriticalSoftware/GRMON.md"
+  ]
+}
