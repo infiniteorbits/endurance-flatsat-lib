@@ -148,5 +148,7 @@ _html/
 
 # Project initialization script
 .initialize_new_project.sh
+
+# Obsidian
 /docs/.obsidian
-/docs/.obsidian
+/docs/.obsidian/*
