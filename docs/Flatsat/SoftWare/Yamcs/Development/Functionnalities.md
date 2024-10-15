@@ -1,1 +1,0 @@
-*Ressources : [Exemples](https://docs.yamcs.org/python-yamcs-client/examples/)*

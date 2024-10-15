@@ -150,4 +150,12 @@ _html/
 .initialize_new_project.sh
 
 # Obsidian
-/docs/.obsidian/
+docs/.obsidian/appearance.json
+docs/.obsidian/core-plugins-migration.json
+docs/.obsidian/core-plugins.json
+docs/.obsidian/workspace.json
+docs/.obsidian/app.json
+docs/.obsidian/appearance.json
+docs/.obsidian/core-plugins-migration.json
+docs/.obsidian/core-plugins.json
+docs/.obsidian/workspace.json

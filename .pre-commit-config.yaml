@@ -16,12 +16,12 @@ repos:
         name: Clear output from Jupyter notebooks
         description: Clear output from Jupyter notebooks.
         files: \.ipynb$
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         entry: jupyter nbconvert --clear-output
     # Prevents committing directly branches named 'main' and 'master'.
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: no-commit-to-branch
         name: Prevent main branch commits
@@ -39,7 +39,7 @@ repos:
         description: Verify that pyproject.toml adheres to the established schema.
     # Verify that GitHub workflows are well formed
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.3
+    rev: 0.29.4
     hooks:
       - id: check-github-workflows
         args: ["--verbose"]
@@ -83,7 +83,7 @@ repos:
           ]
     # Analyze the code style and report code that doesn't adhere.
   - repo: https://github.com/psf/black
-    rev: 24.8.0
+    rev: 24.10.0
     hooks:
       - id: black-jupyter
         name: Format code using black
@@ -95,7 +95,7 @@ repos:
         language_version: python3.12
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.8
+    rev: v0.6.9
     hooks:
       - id: ruff
         name: Lint code using ruff; sort and organize imports 
@@ -103,7 +103,7 @@ repos:
         args: ["--fix"]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.8
+    rev: v0.6.9
     hooks:
       - id: ruff-format
         name: Format code using ruff

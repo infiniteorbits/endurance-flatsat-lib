@@ -1,4 +1,6 @@
-*Related to : [[Functionnalities]]*
+# Yamcs-client
+## Force APID
+
 ```python
 from yamcs.client import YamcsClient
 

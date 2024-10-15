@@ -41,10 +41,30 @@ Notes:
    the Python Project Template documentation on
    `Sphinx and Python Notebooks <https://lincc-ppt.readthedocs.io/en/latest/practices/sphinx.html#python-notebooks>`_.
 
-
 .. toctree::
    :hidden:
 
    Home page <self>
    API Reference <autoapi/index>
-   Notebooks <notebooks>
+ 
+.. toctree::
+   :maxdepth: 1
+   :caption: Yamcs
+   :hidden:
+   
+   Yamcs-Interface </yamcs/yamcs-interface>
+   Yamcs-Client </yamcs/yamcs-client>
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: OBC
+   :hidden:
+   
+   OBC Software Installations </obc/Obc_software_installations>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: How To
+   :hidden:
+   
+   How To - Manage Issue Reports </HowTo/HowToIssueProcess>

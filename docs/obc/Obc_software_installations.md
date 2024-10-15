@@ -1,7 +1,4 @@
-*Related to [[GRMON]]*
-
----
-
+# OBC Software Installations
 ## Setup Instructions
 
 This is split into two steps:  
@@ -15,6 +12,15 @@ This is split into two steps:
 GRMON3 can be downloaded from Cobham Gaisler's webpage (username and password are attached to the hardware license key): [GRMON3 Download](https://www.gaisler.com/index.php/downloads/debug-tools).
 
 Follow the installation guide in the GRMON3 documentation. Don’t forget to set up the Sentinel license key driver.
+
+### Installation 
+Follow these steps to install GRMON. Detailed information can be found further down. 
+1. **Extract** the archive 
+2. **Install** the Sentinel LDK Runtime (GRMON Pro version) 
+3. **Install** the Java runtime environment 11 
+4. *Optionally* install third-party drivers for the debug interfaces. 
+5. *Optionally* setup the path for shared libraries (Linux only) 
+6. *Optionally* add GRMON to the environment variable PATH
 
 Once it works, the bin folder should be added to your system's `PATH` variable. For example, if you extract it under `/home/buildbot/grmon-pro-3.2.17`, you can add this to your `~/.profile` or `~/.bashrc` (depending on your distribution):
 
@@ -92,3 +98,12 @@ to your `~/.profile` or `~/.bashrc`, depending on your distribution.
 **Note**: The RTEMS SDK from the Gaisler webpage supports only 4 UART devices and uses them without interrupts. Skylabs' variant of the RTEMS SDK is rebuilt to support 6 UART devices and uses them with interrupts.
 
 3. Build project with `make TARGET=Debug all` or make `TARGET=Release all`
+
+- - -
+## Critical software installation on RAM OBC
+
+1.  `grmon -ftdi -jtagcable 7 -ucli 5 (Select the appropriate JTAG cable, ucli 5 redirects the uart to the terminal for prints)`
+2.  `load mission_sw_v_0_1.elf (loads the elf into RAM)`
+3.  `dtb hpm-riscv.dtb (Selects the DTB to use)`
+4.  `dtb load (loads the DTB into the stack)`
+5.  `run`
