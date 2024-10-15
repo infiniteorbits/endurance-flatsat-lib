@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"eea4449ff838e0e6","x":-125,"y":-30,"width":250,"height":60,"type":"text","text":"Endurance Flatsat Lib"},
+		{"id":"736fba43aaf355aa","x":-125,"y":180,"width":250,"height":60,"color":"1","type":"text","text":"Interface"},
+		{"id":"42d705717928fe28","x":280,"y":30,"width":250,"height":130,"color":"5","type":"text","text":"Config file : \n\n"},
+		{"id":"4a4f9745ef561c7a","x":-360,"y":380,"width":250,"height":60,"color":"1","type":"text","text":"MDB manager"},
+		{"id":"d0657c6986a172ed","x":40,"y":380,"width":250,"height":60,"color":"1","type":"text","text":"Commands manager"}
+	],
+	"edges":[
+		{"id":"54e072174cff949a","fromNode":"eea4449ff838e0e6","fromSide":"bottom","toNode":"736fba43aaf355aa","toSide":"top"},
+		{"id":"d5cc17dc5f715e7d","fromNode":"42d705717928fe28","fromSide":"left","toNode":"736fba43aaf355aa","toSide":"right"},
+		{"id":"a5458d9de69e6959","fromNode":"736fba43aaf355aa","fromSide":"bottom","toNode":"d0657c6986a172ed","toSide":"top"},
+		{"id":"96ec0cafa10d6cfe","fromNode":"736fba43aaf355aa","fromSide":"bottom","toNode":"4a4f9745ef561c7a","toSide":"top"}
+	]
+}

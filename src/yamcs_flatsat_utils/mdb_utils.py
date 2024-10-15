@@ -1,3 +1,5 @@
+from typing import Optional
+
 from lib_utils.exception import MdbParameterError
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
@@ -8,7 +10,9 @@ class YamcsMDBInterface(YamcsInterface):
     Inherits from YamcsInterface and provides methods for querying space systems, parameters, and commands.
     """
 
-    def __init__(self, host: str, instance: str, processor_name: str) -> None:
+    def __init__(
+        self, host: Optional[str] = None, instance: Optional[str] = None, processor_name: Optional[str] = None
+    ) -> None:
         """
         Initialize the Yamcs MDB interface.
 

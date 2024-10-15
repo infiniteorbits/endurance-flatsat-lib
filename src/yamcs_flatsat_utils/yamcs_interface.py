@@ -1,3 +1,4 @@
+import warnings
 from binascii import hexlify
 from collections.abc import Callable
 from typing import Optional
@@ -11,6 +12,10 @@ from yamcs.client import (  # type: ignore
 )
 from yamcs.tmtc.model import IssuedCommand  # type: ignore
 
+from lib_utils.exception import YamcsInterfaceError
+from lib_utils.warning import YamcsInterfaceWarning
+from yamcs_flatsat_utils.config import read_config
+
 
 class YamcsInterface:
     """
@@ -18,17 +23,47 @@ class YamcsInterface:
     subscribe to telemetry and command history.
     """
 
-    def __init__(self, host: str, instance: str, processor_name: str) -> None:
+    def __init__(
+        self, host: Optional[str] = None, instance: Optional[str] = None, mode: Optional[str] = None
+    ) -> None:
         """
         Initialize the Yamcs client and processor.
 
         Args:
             host (str): The Yamcs host (e.g., "localhost:8090").
             instance (str): The Yamcs instance (e.g., "simulator").
-            processor_name (str): The name of the processor (e.g., "realtime").
+            mode (str): The mode of the processor (e.g., "realtime").
         """
-        self.client = YamcsClient(host)
-        self.processor = self.client.get_processor(instance, processor_name)
+        if host is not None and instance is not None and mode is not None:
+            warnings.warn(
+                f"Creating {instance} instance \
+                          on {host} host, in {mode} mode",
+                YamcsInterfaceWarning,
+            )
+            self.client = YamcsClient(host)
+            self.processor = self.client.get_processor(instance, mode)
+
+        elif host is None and instance is None and mode is None:
+            default_interface_parameters = read_config({"Interface": ["host", "instance", "mode"]})
+
+            default_instance = default_interface_parameters["Interface.instance"]
+            default_host = default_interface_parameters["Interface.host"]
+            default_mode = default_interface_parameters["Interface.mode"]
+
+            warnings.warn(
+                f"Creating default instance : {default_instance} instance on\
+                          {default_host} host, in {default_mode} mode",
+                YamcsInterfaceWarning,
+            )
+
+            self.client = YamcsClient(default_host)
+            self.processor = self.client.get_processor(default_instance, default_mode)
+
+        else:
+            raise YamcsInterfaceError(
+                "Parameters 'host', 'instance' and 'mode' should\
+                                       be all defined or all be set as None."
+            )
 
     def issue_command(
         self, command_name: str, args: Optional[dict[str, str]] = None, verification: Optional[object] = None
