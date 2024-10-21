@@ -3,6 +3,32 @@ import os
 from pathlib import Path
 from typing import Optional
 
+import pandas as pd  # type: ignore
+
+ccf_fields = [
+    "CCF_CNAME",
+    "CCF_DESCR",
+    "CCF_DESCR2",
+    "CCF_CTYPE",
+    "CCF_CRITICAL",
+    "CCF_PKTID",
+    "CCF_TYPE",
+    "CCF_STYPE",
+    "CCF_APID",
+    "CCF_NPARS",
+    "CCF_PLAN",
+    "CCF_EXEC",
+    "CCF_ILSCOPE",
+    "CCF_ILSTAGE",
+    "CCF_SUBSYS",
+    "CCF_HIPRI",
+    "CCF_MAPID",
+    "CCF_DEFSET",
+    "CCF_RAPID",
+    "CCF_ACK",
+    "CCF_SUBSCHEDID",
+]
+
 
 def get_project_root() -> Path:
     """get_project_root _summary_
@@ -11,7 +37,11 @@ def get_project_root() -> Path:
     -------
         _description_
     """
-    return Path(__file__).parent.parent
+    current_path = Path.cwd()
+    for parent in current_path.parents:
+        if parent.name == "endurance-flatsat-lib":
+            return parent
+    return current_path
 
 
 def create_config() -> None:
@@ -19,11 +49,11 @@ def create_config() -> None:
     config = configparser.ConfigParser()
 
     # Add sections and key-value pairs
-    config["Interface"] = {"host": "localhost:8090", "instance": "myproject", "mode": "realtime"}
+    config["Interface"] = {"host": "localhost:8090", "instance": "myproject", "processor": "realtime"}
 
     # Define the path to the configuration file in the 'src' directory of the project
     repo_root = get_project_root()
-    config_path = os.path.join(repo_root, "config.ini")
+    config_path = os.path.join(repo_root, "etc/config/config.ini")
 
     # Write the configuration to the file
     with open(config_path, "w", encoding="utf-8") as configfile:
@@ -48,7 +78,7 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
 
     # Define the path to the configuration file in the 'src' directory of the project
     repo_root = get_project_root()
-    config_path = os.path.join(repo_root, "config.ini")
+    config_path = os.path.join(repo_root, "etc/config/config.ini")
     # Read the configuration file
     config.read(config_path)
 
@@ -75,3 +105,13 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
                 print(f"Warning: Section '{section}' or key '{key}' not found in the configuration file.")
 
     return config_values
+
+
+def create_commands() -> None:
+    """Function to create correspondance to TC names and pus type"""
+    repo_root = get_project_root()
+    ccf_path = repo_root.joinpath("endurance-flight-software/mdb/ccf.dat")
+    mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t")
+    mdb = mdb.dropna(axis=1)
+    config_path = repo_root.joinpath("etc/config/tc_table.dat")
+    mdb.to_csv(config_path, sep="\t", index=False)

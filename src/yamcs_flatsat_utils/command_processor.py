@@ -1,126 +1,125 @@
+import os
+from binascii import hexlify
+from typing import Optional
+
+import pandas as pd  # type: ignore
 from yamcs.client import ParameterSubscription, VerificationConfig  # type: ignore
 from yamcs.tmtc.model import IssuedCommand  # type: ignore
 
+from lib_utils.addr_apid import get_apid_number
+from yamcs_flatsat_utils.config import get_project_root
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
+
+CCF_FILE = "tc_table.dat"
+
+
+def get_cname(csv_file: str = CCF_FILE, ccf_type: int = 0, ccf_stype: int = 0) -> str:
+    """
+    Retrieve the CCF_CNAME based on CCF_TYPE and CCF_STYPE from a CSV file.
+
+    Args:
+    csv_file (str): The path to the CSV file containing the data.
+    ccf_type (int): The type to search for.
+    ccf_stype (int): The subtype to search for.
+
+    Returns:
+    str: The CCF_CNAME if a match is found, otherwise an empty string.
+    """
+    # Lire le fichier CSV dans un DataFrame
+    path_df = os.path.join(get_project_root(), "etc/config/", csv_file)
+    df = pd.read_csv(path_df, sep="\t")
+
+    # Filtrer les résultats en fonction de CCF_TYPE et CCF_STYPE
+    result = df[(df["CCF_TYPE"] == ccf_type) & (df["CCF_STYPE"] == ccf_stype)]
+
+    # Retourner le nom correspondant s'il existe, sinon une chaîne vide
+    return result.iloc[0]["CCF_CNAME"] if not result.empty else ""
 
 
 class CommandProcessor:
     """
     Command processing abstraction, using YamcsInterface to interact with the Yamcs system.
-    Provides higher-level methods for issuing and monitoring commands.
+    Provides a unified method for issuing and monitoring commands.
     """
 
-    def __init__(self, yamcs_interface: YamcsInterface) -> None:
+    def __init__(self, interface: YamcsInterface) -> None:
         """
-        Initialize the CommandProcessor with a YamcsInterface instance.
+        Initialize the CommandProcessor with a Yamcs client instance.
 
         Args:
-            yamcs_interface (YamcsInterface): An instance of YamcsInterface to interact with Yamcs.
+            interface (YamcsInterface): An instance of YamcsClient to interact with Yamcs.
         """
-        self.yamcs_interface = yamcs_interface
+        self.processor = interface.get_processor()
+        self.listen_to_command_history()
 
-    def issue_command(self, command_name: str, args: dict[str, str] | None) -> IssuedCommand:
-        """
-        Send a basic command.
-
-        Args:
-            command_name (str): The name of the command to issue.
-            args (dict, optional): Command arguments (default: None).
-
-        Returns:
-            The issued command object.
-        """
-        command = self.yamcs_interface.issue_command(command_name, args=args)
-        print("Command issued:", command)
-        return command
-
-    def issue_command_modify_verification(
+    def issue_command_yamcs(
         self,
-        command_name: str,
-        args: dict[str, str] | None,
+        apid: str,
+        tc_type: int,
+        tc_stype: int,
+        tc_args: Optional[dict[str, str]] = None,
+        ackflags: int = 0,
+        monitor: bool = True,
+        acknowledgment: Optional[str] = None,
+        disable_verification: bool = False,
+        dry_run: bool = False,
     ) -> IssuedCommand:
         """
-        Send a command with modified verification configuration.
+        Send a command with parameters for PUS commands, verification, and monitoring.
 
         Args:
-            command_name (str): The name of the command to issue.
-            args (dict, optional): Command arguments (default: None).
+            apid (str): Application Process ID for PUS commands.
+            tc_type (int): Type of the PUS telecommand.
+            tc_stype (int): Subtype of the PUS telecommand.
+            tc_args (dict, optional): Command arguments (default: None).
+            ackflags (int, optional): Acknowledgment flags for the PUS command.
+            monitor (bool, optional): If True, monitor the command completion (default: True).
+            acknowledgment (str, optional): Name of the acknowledgment to wait for (e.g., "Acknowledge_Sent").
+            disable_verification (bool): If True, disable all verification checks (default: False).
+            custom_verification (VerificationConfig, optional): Custom verification configuration.
+            dry_run (bool): If True, only simulate the command without sending it.
 
         Returns:
-            The issued command object with modified verification.
+            IssuedCommand: The issued command object.
         """
+        tc_args = tc_args or {}
+        apid = int(get_apid_number(apid))
+        command_name = "/MIB/" + get_cname(ccf_type=tc_type, ccf_stype=tc_stype)
+
+        # Set up verification configuration
         verification = VerificationConfig()
-        verification.disable("Started")
-        verification.modify_check_window("Queued", 1, 5)
+        if disable_verification:
+            verification.disable()
 
-        command = self.yamcs_interface.issue_command(command_name, args=args, verification=verification)
-        print("Command with modified verification issued:", command)
-        return command
+        print(apid, command_name)
 
-    def issue_command_no_verification(self, command_name: str, args: dict[str, str] | None) -> IssuedCommand:
-        """
-        Send a command without any verification checks.
+        # Issue the base command
+        base_command = self.processor.issue_command(
+            command_name,
+            args=tc_args,
+            verification=verification,
+            dry_run=dry_run,
+        )
 
-        Args:
-            command_name (str): The name of the command to issue.
-            args (dict, optional): Command arguments (default: None).
+        # Extract PUS data and issue the PUS command
+        pus_data = base_command.binary[11:]
+        pus_tc = self.processor.issue_command(
+            "/TEST/PUS_TC",
+            args={"apid": apid, "type": tc_type, "subtype": tc_stype, "ackflags": ackflags, "data": pus_data},
+        )
 
-        Returns:
-            The issued command object without verification.
-        """
-        verification = VerificationConfig()
-        verification.disable()
+        # Monitor command completion if requested
+        if monitor:
+            pus_tc.await_complete()
+            if not pus_tc.is_success():
+                print(f"Command failed: {pus_tc.error}")
 
-        command = self.yamcs_interface.issue_command(command_name, args=args, verification=verification)
-        print("Command without verification issued:", command)
-        return command
+        # Monitor acknowledgment if specified
+        if acknowledgment:
+            ack = pus_tc.await_acknowledgment(acknowledgment)
+            print(f"Acknowledgment status: {ack.status}")
 
-    def monitor_command(
-        self,
-        command_name: str,
-        args: dict[str, str] | None,
-        success_command_name: str,
-        success_args: dict[str, str] | None,
-    ) -> None:
-        """
-        Monitor the completion of a command and optionally issue another command if the first succeeds.
-
-        Args:
-            command_name (str): The name of the command to issue and monitor.
-            args (dict, optional): Command arguments (default: None).
-            success_command_name (str, optional): Command to issue if the first command is successful.
-            success_args (dict, optional): Arguments for the success command (default: None).
-        """
-        conn = self.yamcs_interface.create_command_connection()
-
-        command1 = conn.issue(command_name, args=args)
-        command1.await_complete()
-
-        if command1.is_success() and success_command_name:
-            conn.issue(success_command_name, args=success_args)
-        else:
-            print("Command failed:", command1.error)
-
-    def monitor_acknowledgment(
-        self,
-        command_name: list[str],
-        args: dict[str, str] | None,
-        acknowledgment_type: str = "Acknowledge_Sent",
-    ) -> None:
-        """
-        Monitor the acknowledgment status of a command.
-
-        Args:
-            command_name (str): The name of the command to monitor.
-            args (dict, optional): Command arguments (default: None).
-            acknowledgment_type (str, optional): The acknowledgment type \
-                to wait for (default: "Acknowledge_Sent").
-        """
-        conn = self.yamcs_interface.create_command_connection()
-
-        command = conn.issue(command_name, args=args)
-        ack = command.await_acknowledgment(acknowledgment_type)
-        print("Acknowledgment received:", ack.status)
+        return pus_tc
 
     def listen_to_command_history(self) -> ParameterSubscription:
         """
@@ -130,7 +129,7 @@ class CommandProcessor:
         def tc_callback(rec):  # type: ignore
             print("Command history update:", rec)
 
-        self.yamcs_interface.create_command_history_subscription(tc_callback)
+        self.processor.create_command_history_subscription(tc_callback)
 
     def listen_to_telemetry(self, parameter_list: list[str]) -> ParameterSubscription:
         """
@@ -145,4 +144,35 @@ class CommandProcessor:
             for parameter in delivery.parameters:
                 print("Telemetry received:", parameter)
 
-        return self.yamcs_interface.create_parameter_subscription(parameter_list, tm_callback)
+        return self.processor.create_parameter_subscription(parameter_list, tm_callback)
+
+    def receive_container_updates(self, containers=None, callback=None):
+        """
+        Subscribes to specified containers and processes updates using a callback function.
+
+        Args:
+            containers (list of str): A list of container paths to subscribe to. Defaults to
+        ['/YSS/SIMULATOR/FlightData', '/YSS/SIMULATOR/Power'] if not provided.
+            callback (function): The function to call when data is received. Defaults to printing
+        the generation time and hex representation of the packet.
+
+        Example:
+        ```
+        receive_container_updates(processor)
+        ```
+
+        or with a custom callback:
+        ```
+        receive_container_updates(processor, callback=my_custom_callback)
+        ```
+        """
+
+        def default_callback(packet):
+            hexpacket = hexlify(packet.binary).decode("ascii")
+            print(packet.generation_time, ":", hexpacket)
+
+        # Use the provided callback or the default one if not specified
+        self.processor.create_container_subscription(
+            containers=containers,
+            on_data=callback or default_callback,
+        )

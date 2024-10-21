@@ -74,4 +74,5 @@ Notes:
   :caption: Learning
   :hidden:
 
-  Ressources </learnin/ressources>
+  Ressources </learning/ressources>
+  Template "How to" </learning/template>

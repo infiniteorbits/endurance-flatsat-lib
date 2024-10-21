@@ -1,0 +1,39 @@
+CCF_CNAME	CCF_DESCR	CCF_DESCR2	CCF_CRITICAL	CCF_PKTID	CCF_TYPE	CCF_STYPE	CCF_APID	CCF_NPARS	CCF_PLAN	CCF_EXEC	CCF_ILSCOPE	CCF_ILSTAGE	CCF_SUBSYS	CCF_HIPRI	CCF_ACK
+JCC45001	CreateHkSid	Telecommand that creates a housekeeping parameter report structu	N	NOM_TC	3	1	1	8	A	Y	N	C	140	N	0
+JCC45002	DeleteHkSid	Telecommand that deletes a housekeeping parameter report structu	N	NOM_TC	3	3	1	2	A	Y	N	C	140	N	0
+JCC45003	EnPeriodicGenRepHkSid	Telecommand that enables the periodic generation of housekeeping	N	NOM_TC	3	5	1	2	A	Y	N	C	140	N	0
+JCC45004	DisPeriodicGenRepHkSid	Telecommand that disables the periodic generation of housekeepin	N	NOM_TC	3	6	1	2	A	Y	N	C	140	N	0
+JCC45005	ReportHkSid	Telecommand that requests a report of housekeeping parameter rep	N	NOM_TC	3	9	1	2	A	Y	N	C	140	N	0
+JCC45006	EnableReportGenEventId	Represents the enable of the report generation of event definiti	N	NOM_TC	5	5	1	2	A	Y	N	C	140	N	0
+JCC45007	DisableReportGenEventId	Represents the disable of the report generation of event definit	N	NOM_TC	5	6	1	2	A	Y	N	C	140	N	0
+JCC45008	EnTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	1	1	0	A	Y	N	C	140	N	0
+JCC45009	DiTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	2	1	0	A	Y	N	C	140	N	0
+JCC45010	ReTiBaScExFu	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	3	1	0	A	Y	N	C	140	N	0
+JCC45011	InAcTiBaSc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	4	1	4	A	Y	N	C	140	N	0
+JCC45012	DeTiBaScAcByReId	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	5	1	6	A	Y	N	C	140	N	0
+JCC45013	TiShScAcByReId	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	7	1	7	A	Y	N	C	140	N	0
+JCC45014	DeReTiBaScAcByReId	Request to detail-report time-based scheduled activities identif	N	NOM_TC	11	9	1	6	A	Y	N	C	140	N	0
+JCC45015	TiShAlScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	15	1	1	A	Y	N	C	140	N	0
+JCC45016	DeReAlTiBaScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	16	1	0	A	Y	N	C	140	N	0
+JCC45017	SuReAlTiBaScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	17	1	0	A	Y	N	C	140	N	0
+JCC45018	ReStTiBaSuSc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	18	1	0	A	Y	N	C	140	N	0
+JCC45019	EnTimeBasedSubSchedule	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	20	1	2	A	Y	N	C	140	N	0
+JCC45020	DisTimeBasedSubSchedule	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	21	1	2	A	Y	N	C	140	N	0
+JCC45021	EnParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	1	1	2	A	Y	N	C	140	N	0
+JCC45022	DisParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	2	1	2	A	Y	N	C	140	N	0
+JCC45023	ChangeMaxTransRepDelay	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	3	1	1	A	Y	N	C	140	N	0
+JCC45024	DelAllParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	4	1	0	A	Y	N	C	140	N	0
+JCC45025	DelParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	6	1	2	A	Y	N	C	140	N	0
+JCC45026	RepParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	8	1	2	A	Y	N	C	140	N	0
+JCC45027	ReportOutOfLimits	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	10	1	0	A	Y	N	C	140	N	0
+JCC45028	RepStatPmonDef	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	13	1	0	A	Y	N	C	140	N	0
+JCC45029	EnParamMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	15	1	0	A	Y	N	C	140	N	0
+JCC45030	DisParamMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	16	1	0	A	Y	N	C	140	N	0
+JCC45031	EnFunctionalMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	17	1	0	A	Y	N	C	140	N	0
+JCC45032	DisFunctionalMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	18	1	0	A	Y	N	C	140	N	0
+JCC45033	EnFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	19	1	2	A	Y	N	C	140	N	0
+JCC45034	DisFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	20	1	2	A	Y	N	C	140	N	0
+JCC45035	DelFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	24	1	2	A	Y	N	C	140	N	0
+JCC45036	RepFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	25	1	2	A	Y	N	C	140	N	0
+JCC45037	RepStatFunctionalMonDef	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	27	1	0	A	Y	N	C	140	N	0
+JCC45038	PeAnArYoAlCoTe	Represents the capability of test service for performing are-you	N	NOM_TC	17	1	1	0	A	Y	N	C	140	N	0

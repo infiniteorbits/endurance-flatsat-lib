@@ -1,5 +1,3 @@
-from typing import Optional
-
 from lib_utils.exception import MdbParameterError
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
@@ -10,19 +8,14 @@ class YamcsMDBInterface(YamcsInterface):
     Inherits from YamcsInterface and provides methods for querying space systems, parameters, and commands.
     """
 
-    def __init__(
-        self, host: Optional[str] = None, instance: Optional[str] = None, processor_name: Optional[str] = None
-    ) -> None:
+    def __init__(self, interface: YamcsInterface) -> None:
         """
-        Initialize the Yamcs MDB interface.
+        Initialize the CommandProcessor with a Yamcs client instance.
 
         Args:
-            host (str): The Yamcs host (e.g., "localhost:8090").
-            instance (str): The Yamcs instance (e.g., "simulator").
-            processor_name (str): The name of the processor (e.g., "realtime").
+            interface (YamcsInterface): An instance of YamcsClient to interact with Yamcs.
         """
-        super().__init__(host, instance, processor_name)
-        self.mdb = self.client.get_mdb(instance)
+        self.mdb = interface.get_mdb()
 
     def print_space_systems(self) -> None:
         """

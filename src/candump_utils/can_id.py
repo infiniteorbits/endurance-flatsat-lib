@@ -2,8 +2,8 @@
 
 from typing import Any, Optional
 
-from candump_utils.addr_apid import lookup_value
 from candump_utils.utils import split_string
+from lib_utils.addr_apid import lookup_value
 
 
 def write_candump_line(line: str, doplot: bool = True) -> Optional[tuple[dict[str, Any], bool]]:

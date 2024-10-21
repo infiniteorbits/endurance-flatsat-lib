@@ -2,7 +2,7 @@
 
 from typing import Any, Optional
 
-from candump_utils.addr_apid import lookup_value
+from lib_utils.addr_apid import lookup_value
 
 
 def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[str, Any]]:
