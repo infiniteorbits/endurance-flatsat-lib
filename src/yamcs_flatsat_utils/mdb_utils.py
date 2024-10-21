@@ -2,7 +2,7 @@ from lib_utils.exception import MdbParameterError
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
 
-class YamcsMDBInterface(YamcsInterface):
+class YamcsMDBInterface:
     """
     Extended Yamcs interface for interacting with the Mission Database (MDB).
     Inherits from YamcsInterface and provides methods for querying space systems, parameters, and commands.

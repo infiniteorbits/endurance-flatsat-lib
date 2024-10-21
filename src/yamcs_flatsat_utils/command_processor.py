@@ -1,13 +1,14 @@
 import os
 from binascii import hexlify
-from typing import Optional
+from collections.abc import Callable
+from typing import Optional, Union
 
-import pandas as pd  # type: ignore
-from yamcs.client import ParameterSubscription, VerificationConfig  # type: ignore
-from yamcs.tmtc.model import IssuedCommand  # type: ignore
+import pandas as pd
+from yamcs.client import ContainerSubscription, ParameterSubscription, VerificationConfig  # type: ignore
+from yamcs.tmtc.model import ContainerData, IssuedCommand  # type: ignore
 
 from lib_utils.addr_apid import get_apid_number
-from yamcs_flatsat_utils.config import get_project_root
+from lib_utils.config import get_project_root
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
 CCF_FILE = "tc_table.dat"
@@ -59,7 +60,7 @@ class CommandProcessor:
         tc_stype: int,
         tc_args: Optional[dict[str, str]] = None,
         ackflags: int = 0,
-        monitor: bool = True,
+        monitor: bool = False,
         acknowledgment: Optional[str] = None,
         disable_verification: bool = False,
         dry_run: bool = False,
@@ -83,15 +84,13 @@ class CommandProcessor:
             IssuedCommand: The issued command object.
         """
         tc_args = tc_args or {}
-        apid = int(get_apid_number(apid))
+        apid_number = get_apid_number(apid)
         command_name = "/MIB/" + get_cname(ccf_type=tc_type, ccf_stype=tc_stype)
 
         # Set up verification configuration
         verification = VerificationConfig()
         if disable_verification:
             verification.disable()
-
-        print(apid, command_name)
 
         # Issue the base command
         base_command = self.processor.issue_command(
@@ -105,7 +104,13 @@ class CommandProcessor:
         pus_data = base_command.binary[11:]
         pus_tc = self.processor.issue_command(
             "/TEST/PUS_TC",
-            args={"apid": apid, "type": tc_type, "subtype": tc_stype, "ackflags": ackflags, "data": pus_data},
+            args={
+                "apid": apid_number,
+                "type": tc_type,
+                "subtype": tc_stype,
+                "ackflags": ackflags,
+                "data": pus_data,
+            },
         )
 
         # Monitor command completion if requested
@@ -146,7 +151,11 @@ class CommandProcessor:
 
         return self.processor.create_parameter_subscription(parameter_list, tm_callback)
 
-    def receive_container_updates(self, containers=None, callback=None):
+    def receive_container_updates(
+        self,
+        containers: Union[str, list[str]],
+        callback: Optional[Callable[[ContainerData], None]] = None,
+    ) -> ContainerSubscription:
         """
         Subscribes to specified containers and processes updates using a callback function.
 
@@ -167,7 +176,7 @@ class CommandProcessor:
         ```
         """
 
-        def default_callback(packet):
+        def default_callback(packet):  # type: ignore
             hexpacket = hexlify(packet.binary).decode("ascii")
             print(packet.generation_time, ":", hexpacket)
 

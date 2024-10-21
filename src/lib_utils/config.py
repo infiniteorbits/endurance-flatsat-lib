@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from typing import Optional
 
-import pandas as pd  # type: ignore
+import pandas as pd
 
 ccf_fields = [
     "CCF_CNAME",

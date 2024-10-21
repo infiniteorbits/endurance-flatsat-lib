@@ -1,7 +1,5 @@
 from lib_utils.exception import ApidParameterError
 
-"""This module is making correspondance betweens ids and systems related to the ICD"""
-
 # Define all dictionaries
 lookup_tables = {
     "transfer_type": {

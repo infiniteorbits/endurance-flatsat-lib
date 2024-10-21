@@ -425,6 +425,7 @@ disable=raw-checker-failed,
         missing-module-docstring,
         unnecessary-pass,
         unsupported-binary-operation,
+        too-many-positional-arguments,
 
 
 # Enable the message, report, category or checker with the given id(s). You can

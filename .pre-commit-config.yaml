@@ -32,7 +32,7 @@ repos:
         args: ['--maxkb=500']
     # Verify that pyproject.toml is well formed
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.20.2
+    rev: v0.21
     hooks:
       - id: validate-pyproject
         name: Validate pyproject.toml
@@ -95,7 +95,7 @@ repos:
         language_version: python3.12
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.9
+    rev: v0.7.0
     hooks:
       - id: ruff
         name: Lint code using ruff; sort and organize imports 
@@ -103,7 +103,7 @@ repos:
         args: ["--fix"]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.6.9
+    rev: v0.7.0
     hooks:
       - id: ruff-format
         name: Format code using ruff

@@ -3,9 +3,9 @@ from typing import Optional
 
 from yamcs.client import ArchiveClient, MDBClient, ProcessorClient, YamcsClient  # type: ignore
 
+from lib_utils.config import read_config
 from lib_utils.exception import YamcsInterfaceError
 from lib_utils.warning import YamcsInterfaceWarning
-from yamcs_flatsat_utils.config import read_config
 
 
 class YamcsInterface:
@@ -48,7 +48,7 @@ class YamcsInterface:
             self.client = YamcsClient(self.host)
         else:
             raise YamcsInterfaceError(
-                "Parameters 'host', 'instance'," "and 'processor' should all be defined or all be None."
+                "Parameters 'host', 'instance', and 'processor' should all be defined or all be None."
             )
 
     def get_processor(self) -> ProcessorClient:
