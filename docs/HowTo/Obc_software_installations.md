@@ -84,23 +84,72 @@ grmon -ftdi -jtagserial 01541KRT
 
 ---
 
-## RTEMS SDK Installation
+## Installation Guide for Skylabs NANOhpm-OBC
 
-1. Extract `rtems-noel-1.0.4-2022-07-05-14-00-toolchain-ubuntu-22.04.tar.bz2` to your home folder. *Drive : [Nano-HPM-zip](https://drive.google.com/file/d/1Ny_-3nRZRY5-i6MD_pVNblY0_wXvLkzy/view?usp=drive_link)*
-2. Add its bin folder to the system `PATH` variable. For example, if you extracted it under `/home/buildbot/rtems-noel-1.0.4`, you can add:
+### 1. Download and Extract Application Code
+
+- Download `NANO_hpm_application_code.zip` from [CSWxIO/OBC&SkyLabs Information](https://drive.google.com/drive/folders/1oFkO6h9tL5cpfq3l_QFWWIBa1U-LH-5j).
+- Unzip the file to your desired location.
+
+### 2. Install RTEMS SDK
+
+- Extract `rtems-noel-1.0.4-2022-07-05-14-00-toolchain-ubuntu-22.04.tar.bz2` to your home folder. You can find it here: [Nano-HPM-zip](https://drive.google.com/file/d/1Ny_-3nRZRY5-i6MD_pVNblY0_wXvLkzy/view?usp=drive_link).
+- Add its bin folder to the system `PATH` variable. For example, if you extracted it under `/home/buildbot/rtems-noel-1.0.4`, you can add the following to your `~/.profile` or `~/.bashrc`:
 
 ```bash
 PATH="$PATH:/home/buildbot/rtems-noel-1.0.4/bin"
 ```
 
-to your `~/.profile` or `~/.bashrc`, depending on your distribution.
+**Note**: The RTEMS SDK from the Gaisler webpage supports only 4 UART devices without interrupts. Skylabs' variant of the RTEMS SDK is rebuilt to support 6 UART devices with interrupts.
 
-**Note**: The RTEMS SDK from the Gaisler webpage supports only 4 UART devices and uses them without interrupts. Skylabs' variant of the RTEMS SDK is rebuilt to support 6 UART devices and uses them with interrupts.
+### 3. Add Path to Profile
 
-3. Build project with `make TARGET=Debug all` or make `TARGET=Release all`
+Add the following line to your `.profile` file to ensure the SDK is always available:
+
+```bash
+if [ -d "$HOME/path/to/rtems-noel-1.0.4/bin/" ]; then
+    PATH="$PATH:$HOME/path/to/rtems-noel-1.0.4/bin"
+fi
+```
+
+### 4. Install Required Dependencies
+
+Install the `device-tree-compiler` package:
+
+```bash
+sudo apt-get install device-tree-compiler
+```
+
+### 5. Build the Software Application
+
+- Navigate to the `hpm-riscv` folder in the extracted application code.
+- Run one of the following commands to build the project:
+
+  ```bash
+  make TARGET=Debug all
+  ```
+
+  or
+
+  ```bash
+  make TARGET=Release all
+  ```
+
+- A folder (`Debug` or `Release`) should be generated, containing the application binaries.
+
+### Useful Guides
+
+- [How to flash the Mission OBC] (insert link here)
 
 - - -
 ## Critical software installation on RAM OBC
+
+1.  `grmon -ftdi -jtagcable 7 -ucli 5 (Select the appropriate JTAG cable, ucli 5 redirects the uart to the terminal for prints)`
+2.  `load mission_sw_v_0_1.elf (loads the elf into RAM)`
+3.  `dtb hpm-riscv.dtb (Selects the DTB to use)`
+4.  `dtb load (loads the DTB into the stack)`
+5.  `run`
+## Critical software installation on Flash memory
 
 1.  `grmon -ftdi -jtagcable 7 -ucli 5 (Select the appropriate JTAG cable, ucli 5 redirects the uart to the terminal for prints)`
 2.  `load mission_sw_v_0_1.elf (loads the elf into RAM)`

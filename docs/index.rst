@@ -57,17 +57,11 @@ Notes:
 
 .. toctree::
    :maxdepth: 1
-   :caption: OBC
-   :hidden:
-
-   OBC Software Installations </obc/Obc_software_installations>
-
-.. toctree::
-   :maxdepth: 1
    :caption: How To
    :hidden:
 
    How To - Manage Issue Reports </HowTo/HowToIssueProcess>
+   How To - OBC software </HowTo/Obc_software_installations>
 
 .. toctree::
   :maxdepth: 1
