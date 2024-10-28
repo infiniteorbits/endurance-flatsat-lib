@@ -1,3 +1,4 @@
+
 .. yamcs_flatsat_utils documentation main file.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -15,7 +16,7 @@ create and activate a new environment.
 
 .. code-block:: console
 
-   >> conda create env -n <env_name> python=3.10
+   >> conda create env -n <env_name> python=3.12
    >> conda activate <env_name>
 
 
