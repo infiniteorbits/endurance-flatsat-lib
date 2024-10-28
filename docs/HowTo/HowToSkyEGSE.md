@@ -1,6 +1,6 @@
 # How to Install and Configure skyEGSE-GUI for Skylab Equipment
 
-## Introduction
+### Introduction
 
 The **skyEGSE-GUI** application provides an out-of-the-box solution for the control, monitoring, and management of any SkyLabs equipment. This GUI, developed on top of the powerful **NANOsky CMM SDK Application Library module**, enables connection to target equipment via **skyEGSE-LINK2** or **skyEGSE-comm** and includes features such as:
 
@@ -14,9 +14,9 @@ The **skyEGSE-GUI** application provides an out-of-the-box solution for the cont
 
 ---
 
-# Part 1: Installing flight software on flash
+### Part 1: Installing flight software on flash
 
-## Installation Steps
+#### Installation Steps
 
 1. **Download** the installation zip file from [cloud-skylab](https://cloud.skylabs.si/d/s/ysb1MxxZKMflwU8uLduIYSGHEK1AV7x5/FQV0Oh0CMYNqj7eimEeY1jbh-j3OUsqz-cb1A3az1bws).
 2. **Make the installation script executable** by running:
@@ -39,9 +39,9 @@ The **skyEGSE-GUI** application provides an out-of-the-box solution for the cont
 
 ---
 
-# Part 2: Managing the NANOhpm-OBC Supervisor Heartbeat
+## Part 2: Managing the NANOhpm-OBC Supervisor Heartbeat
 
-## Context
+### Context
 
 The **NANOhpm-OBC** contains an application core executing mission-specific functions and a supervisor monitoring the application’s status. These components operate independently as distinct nodes on the CANbus. By default, the supervisor sends a heartbeat signal at 1 Hz, which is helpful for testing but can be disabled for in-flight operations to prevent dependency on the supervisor.
 
