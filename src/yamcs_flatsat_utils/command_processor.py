@@ -60,10 +60,9 @@ class CommandProcessor:
         tc_stype: int,
         tc_args: Optional[dict[str, str]] = None,
         ackflags: int = 0,
-        monitor: bool = False,
+        monitor: bool = True,
         acknowledgment: Optional[str] = None,
         disable_verification: bool = False,
-        dry_run: bool = False,
     ) -> IssuedCommand:
         """
         Send a command with parameters for PUS commands, verification, and monitoring.
@@ -97,7 +96,7 @@ class CommandProcessor:
             command_name,
             args=tc_args,
             verification=verification,
-            dry_run=dry_run,
+            dry_run=True,
         )
 
         # Extract PUS data and issue the PUS command
@@ -113,16 +112,16 @@ class CommandProcessor:
             },
         )
 
+        # Monitor acknowledgment if specified
+        if acknowledgment:
+            ack = pus_tc.await_acknowledgment(acknowledgment)
+            print(f"Acknowledgment status: {ack.status}")
+
         # Monitor command completion if requested
         if monitor:
             pus_tc.await_complete()
             if not pus_tc.is_success():
                 print(f"Command failed: {pus_tc.error}")
-
-        # Monitor acknowledgment if specified
-        if acknowledgment:
-            ack = pus_tc.await_acknowledgment(acknowledgment)
-            print(f"Acknowledgment status: {ack.status}")
 
         return pus_tc
 
