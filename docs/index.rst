@@ -62,11 +62,13 @@ Notes:
 
    How To - Manage Issue Reports </HowTo/HowToIssueProcess>
    How To - OBC software </HowTo/Obc_software_installations>
+   How To - Skylab GUI </HowTo/HowToSkyEGSE>
 
 .. toctree::
   :maxdepth: 1
   :caption: Learning
   :hidden:
 
-  Ressources </learning/ressources>
   Template "How to" </learning/template>
+  Ressources </learning/ressources>
+

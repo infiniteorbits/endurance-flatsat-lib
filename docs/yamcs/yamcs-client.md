@@ -1,5 +1,9 @@
 # Yamcs-client
+
+All of these examples run against a simulation that is used to develop and demo Yamcs. This setup is linked to a simple simulator which emits TM in the form of CCSDS packets and accepts a few telecommands as well.
 ## Force APID
+
+Issue command is from basis with command name, without choosing the apid, or the ackflags. See how to do instead
 
 ```python
 from yamcs.client import YamcsClient
@@ -27,3 +31,4 @@ struct.pack_into('>H', pus_data, 0, 0xABCD)
 pus_tc = processor.issue_command("/TEST/PUS_TC", args={"apid": 1, "type": 5, "subtype": 5, "ackflags": 0, "data": pus_data})
 print(f"modified binary: {pus_tc.binary.hex()}")
 ```
+
