@@ -149,6 +149,81 @@ sudo apt-get install device-tree-compiler
 3.  `dtb hpm-riscv.dtb (Selects the DTB to use)`
 4.  `dtb load (loads the DTB into the stack)`
 5.  `run`
-## Critical software installation on Flash memory
+## Critical Software Installation on Flash Memory
 
-1.  Follow How To Sky EGSE GUI
+### Step 1: Convert ELF to Binary
+
+1. **Retrieve `pack_fw.py`** from the `hpm-riscv` folder. This script will package the firmware binary with a header and checksum.
+
+    ```python
+    #!/usr/bin/python
+    # Copyright (c) 2022 SkyLabs d.o.o. <info@skylabs.si>
+
+    import sys
+    import struct
+    import binascii
+    import os
+
+    def main():
+        if len(sys.argv) < 2:
+            print("%s <filename>" % sys.argv[0])
+            return
+
+        with open(sys.argv[1], "r+b") as f:
+            size = os.path.getsize(sys.argv[1])
+            data = f.read(size)
+            crc = binascii.crc32(data) & 0xffffffff
+
+            # Write header
+            f.seek(0)
+            f.write(struct.pack('<L', 0x4e4f454c))
+            f.write(struct.pack('<L', size))
+            f.write(struct.pack('<L', crc))
+
+            # Write firmware data
+            f.write(data)
+            
+            # Expand file to a multiple of 1536 bytes
+            remainder = (size + 12) % 1536
+            if remainder != 0:
+                f.write(bytes([0] * (1536 - remainder)))
+            
+    if __name__ == "__main__":
+        main()
+    ```
+
+2. **Run the Makefile** to convert the ELF file to binary and package it.
+
+    ```makefile
+    # Makefile for ELF to BIN conversion and packaging
+
+    EXISTING_ELF = mission_sw_v_0_2.elf
+    OUTPUT_BIN = csw-FS.bin
+    SCRIPT = ./pack_fw.py
+
+    # Tools
+    OBJCOPY := riscv-rtems5-objcopy
+    PYTHON := python3
+
+    # Default target
+    all: $(OUTPUT_BIN)
+
+    # Rule to convert ELF to BIN
+    $(OUTPUT_BIN): $(EXISTING_ELF)
+        @echo [OBJCOPY] Converting ELF to BIN...
+        @$(OBJCOPY) --gap-fill 0 -O binary $< $@
+        @echo "Conversion complete: $@"
+        @echo [SCRIPT] Running Python script for packaging...
+        @$(PYTHON) $(SCRIPT) $@
+        @echo "Packaging complete."
+
+    # Clean target
+    clean:
+        @rm -f $(OUTPUT_BIN)
+
+    .PHONY: all clean
+    ```
+
+### Step 2: Install Binary on Flash
+
+1. **Use Sky EGSE GUI** to install the generated binary (`csw-FS.bin`) on the flash memory. Follow the specific instructions in the Sky EGSE GUI documentation for installation.
