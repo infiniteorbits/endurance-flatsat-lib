@@ -68,7 +68,7 @@ If you want to use a physical CAN interface instead of a virtual one (like `vcan
 1. **Activate the CAN Interface**  
    Replace `can0` with your actual CAN device name. Set the bitrate according to your network:
    ```bash
-   sudo ip link set can0 up type can bitrate 500000
+   sudo ip link set can0 up type can bitrate 10000
    ```
 
 2. **Monitor CAN Traffic**  

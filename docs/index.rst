@@ -65,6 +65,7 @@ Notes:
    How To - Manage Issue Reports </HowTo/HowToIssueProcess>
    How To - OBC software </HowTo/Obc_software_installations>
    How To - Skylab GUI </HowTo/HowToSkyEGSE>
+   How To - SSH Connection to FlatSat PC </HowTo/HowToSshFlatSatPC>
 
 .. toctree::
   :maxdepth: 1
