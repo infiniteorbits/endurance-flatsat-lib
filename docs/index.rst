@@ -53,7 +53,8 @@ Notes:
    :caption: Yamcs
    :hidden:
 
-   Yamcs-Interface </yamcs/yamcs-interface>
+   Yamcs-Quickstart-Interface </yamcs/Quickstar-yamcs-interface>
+   Yamcs-IO-Interface </yamcs/yamcs-interface>
    Yamcs-Client </yamcs/yamcs-client>
 
 .. toctree::
@@ -72,4 +73,3 @@ Notes:
 
   Template "How to" </learning/template>
   Ressources </learning/ressources>
-

@@ -107,11 +107,18 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
     return config_values
 
 
-def create_commands() -> None:
+def create_commands(path: Optional[str] = None) -> None:
     """Function to create correspondance to TC names and pus type"""
+
     repo_root = get_project_root()
-    ccf_path = repo_root.joinpath("endurance-flight-software/mdb/ccf.dat")
-    mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t")
+
+    if path is None:
+        ccf_path = repo_root.joinpath("endurance-flight-software/mdb/ccf.dat")
+        mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t")
+
+    else:
+        mdb = pd.read_table(path, names=ccf_fields, sep="\t")
+
     mdb = mdb.dropna(axis=1)
     config_path = repo_root.joinpath("etc/config/tc_table.dat")
     mdb.to_csv(config_path, sep="\t", index=False)
