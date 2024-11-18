@@ -109,3 +109,6 @@ yamcs_flatsat_utils = ["py.typed"]
 
 [tool.coverage.run]
 omit=["src/yamcs_flatsat_utils/_version.py"]
+
+[project.scripts]
+decan = "scripts.candump:main"
