@@ -8,7 +8,7 @@ from yamcs.client import ContainerSubscription, ParameterSubscription, Verificat
 from yamcs.tmtc.model import ContainerData, IssuedCommand  # type: ignore
 
 from lib_utils.addr_apid import get_apid_number
-from lib_utils.config import get_project_root
+from lib_utils.config import create_commands, get_project_root
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
 CCF_FILE = "tc_table.dat"
@@ -52,6 +52,7 @@ class CommandProcessor:
         """
         self.processor = interface.get_processor()
         self.listen_to_command_history()
+        create_commands()  # That command creates etc/config/tc_tables.dat
 
     def issue_command_yamcs(
         self,
@@ -89,13 +90,13 @@ class CommandProcessor:
         # Set up verification configuration
         verification = VerificationConfig()
         if disable_verification:
+            print("Verification Disabled")
             verification.disable()
 
         # Issue the base command
         base_command = self.processor.issue_command(
             command_name,
             args=tc_args,
-            verification=verification,
             dry_run=True,
         )
 
@@ -110,6 +111,7 @@ class CommandProcessor:
                 "ackflags": ackflags,
                 "data": pus_data,
             },
+            verification=verification,
         )
 
         # Monitor acknowledgment if specified
