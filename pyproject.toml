@@ -111,4 +111,4 @@ yamcs_flatsat_utils = ["py.typed"]
 omit=["src/yamcs_flatsat_utils/_version.py"]
 
 [project.scripts]
-decan = "scripts.candump:main"
+candump-format = "scripts.candump:main"

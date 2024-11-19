@@ -16,7 +16,19 @@ you whether or not you'd like to display it!
 For more information about the project template see the 
 [documentation](https://lincc-ppt.readthedocs.io/en/latest/).
 
-## Dev Guide - Getting Started
+## Getting Started
+
+### Installation
+
+Ensure that you clone the project with the submodule by doing :
+
+```
+git clone https://<USERNAME>:<TOKEN>@github.com/infiniteorbits/endurance-flatsat-lib.git --recursive-submodules
+```
+
+Where the Token is created in your personnal Settings > Developper settings > Personnal access tokens > Tokens (classic)
+
+### Dev Guide
 
 Before installing any dependencies or writing code, it's a great idea to create a
 virtual environment. LINCC-Frameworks engineers primarily use `conda` to manage virtual

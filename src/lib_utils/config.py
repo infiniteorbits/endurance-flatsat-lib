@@ -1,5 +1,6 @@
 import configparser
 import os
+import subprocess
 from pathlib import Path
 from typing import Optional
 
@@ -50,10 +51,14 @@ def create_config() -> None:
 
     # Add sections and key-value pairs
     config["Interface"] = {"host": "localhost:8090", "instance": "myproject", "processor": "realtime"}
+    config["Submodule"] = {
+        "name": "endurance-flight-software-csw",
+        "commit": "3b78dfb94a62796e93abc943db47c63c04389b2e",
+    }
 
     # Define the path to the configuration file in the 'src' directory of the project
     repo_root = get_project_root()
-    config_path = os.path.join(repo_root, "etc/config/config.ini")
+    config_path = os.path.join(repo_root, "config.ini")
 
     # Write the configuration to the file
     with open(config_path, "w", encoding="utf-8") as configfile:
@@ -62,7 +67,8 @@ def create_config() -> None:
 
 def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # type: ignore
     """
-    Reads specified values from a configuration file or prints the entire file if no values are requested.
+    Reads specified values from a configuration file or
+    prints the entire file if no values are requested.
 
     Args:
         requested_values (dict, optional): A dictionary where the keys are section names
@@ -78,7 +84,7 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
 
     # Define the path to the configuration file in the 'src' directory of the project
     repo_root = get_project_root()
-    config_path = os.path.join(repo_root, "etc/config/config.ini")
+    config_path = os.path.join(repo_root, "config.ini")
     # Read the configuration file
     config.read(config_path)
 
@@ -108,17 +114,76 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
 
 
 def create_commands(path: Optional[str] = None) -> None:
-    """Function to create correspondance to TC names and pus type"""
+    """
+    Creates a correspondence table for TC names and PUS types.
+    The table's filename includes the SHA1 of the submodule commit.
 
+    Parameters
+    ----------
+    path : Optional[str]
+        Custom path to the CCF data file. If not provided, uses the default path
+        derived from the submodule and configuration.
+    """
     repo_root = get_project_root()
+    config = read_config({"Submodule": ["name", "commit"]})
 
-    if path is None:
-        ccf_path = repo_root.joinpath("endurance-flight-software/mdb/ccf.dat")
-        mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t")
+    submodule_name = config["Submodule.name"]
+    expected_commit = config["Submodule.commit"]
+    submodule_path = repo_root / submodule_name
 
+    # Validate submodule path and commit
+    if not submodule_path.exists() or not submodule_path.is_dir():
+        raise FileNotFoundError(f"Submodule path does not exist: {submodule_path}")
+
+    current_commit = get_submodule_commit(submodule_path)
+    if current_commit != expected_commit:
+        raise ValueError(f"Submodule commit mismatch. Expected: {expected_commit}, Found: {current_commit}")
+
+    # Name of the TC table file with the commit SHA1
+    tc_table_name = f"tc_table_{current_commit}.dat"
+    tc_table_path = repo_root / "etc" / "config" / tc_table_name
+
+    # Check if the table already exists
+    if tc_table_path.exists():
+        print(f"TC table already exists: {tc_table_path}")
+        return
+
+    # Determine the path to the CCF file
+    if path is None:  # noqa: SIM108
+        ccf_path = submodule_path / "mdb" / "ccf.dat"
     else:
-        mdb = pd.read_table(path, names=ccf_fields, sep="\t")
+        ccf_path = Path(path)
 
-    mdb = mdb.dropna(axis=1)
-    config_path = repo_root.joinpath("etc/config/tc_table.dat")
-    mdb.to_csv(config_path, sep="\t", index=False)
+    if not ccf_path.exists():
+        raise FileNotFoundError(f"CCF file not found at: {ccf_path}")
+
+    # Read and process the CCF data
+    print(f"Reading CCF data from: {ccf_path}")
+    mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t").dropna(axis=1)
+
+    # Save the processed data with the commit SHA1 in the filename
+    tc_table_path.parent.mkdir(parents=True, exist_ok=True)
+    mdb.to_csv(tc_table_path, sep="\t", index=False)
+
+    print(f"TC table created at: {tc_table_path}")
+
+
+def get_submodule_commit(submodule_path: Path) -> str:
+    """
+    Retrieves the current commit hash of the specified submodule.
+
+    Parameters
+    ----------
+    submodule_path : Path
+        The path to the submodule directory.
+
+    Returns
+    -------
+    str
+        The commit hash of the submodule.
+    """
+    try:
+        commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=submodule_path, text=True).strip()
+        return commit
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"Failed to retrieve the commit for the submodule: {submodule_path}") from e
