@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: v2.0.3
+_commit: v2.0.4
 _src_path: gh:lincc-frameworks/python-project-template
 author_email: romain@infiniteorbits.io
 author_name: Romain Lhoussaine
@@ -22,3 +22,4 @@ project_name: endurance-flatsat-lib
 project_organization: infiniteorbits
 python_versions:
 - '3.12'
+- '3.13'
