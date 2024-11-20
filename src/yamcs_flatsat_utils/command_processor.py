@@ -8,26 +8,28 @@ from yamcs.client import ContainerSubscription, ParameterSubscription, Verificat
 from yamcs.tmtc.model import ContainerData, IssuedCommand  # type: ignore
 
 from lib_utils.addr_apid import get_apid_number
-from lib_utils.config import create_commands, get_project_root
+from lib_utils.config import create_commands, get_project_root, read_config
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
-CCF_FILE = "tc_table.dat"
 
-
-def get_cname(csv_file: str = CCF_FILE, ccf_type: int = 0, ccf_stype: int = 0) -> str:
+def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:
     """
     Retrieve the CCF_CNAME based on CCF_TYPE and CCF_STYPE from a CSV file.
 
     Args:
-    csv_file (str): The path to the CSV file containing the data.
+    dat_file (str): The path to the CSV file containing the data.
     ccf_type (int): The type to search for.
     ccf_stype (int): The subtype to search for.
 
     Returns:
     str: The CCF_CNAME if a match is found, otherwise an empty string.
     """
+    config = read_config({"Submodule": ["name", "commit"]})
+    expected_commit = config["Submodule.commit"]
+    dat_file = f"tc_table_{expected_commit}.dat"
+
     # Lire le fichier CSV dans un DataFrame
-    path_df = os.path.join(get_project_root(), "etc/config/", csv_file)
+    path_df = os.path.join(get_project_root(), "etc/config/", dat_file)
     df = pd.read_csv(path_df, sep="\t")
 
     # Filtrer les résultats en fonction de CCF_TYPE et CCF_STYPE
