@@ -1,3 +1,4 @@
+
 [project]
 name = "endurance-flatsat-lib"
 license = {file = "LICENSE"}
@@ -17,6 +18,8 @@ dynamic = ["version"]
 requires-python = ">=3.12"
 dependencies = [
     "yamcs-client >= 1.10.0",
+    "pandas >= 2.2.3",
+    "pandas-stubs >= 2.2.3.241009",
 ]
 
 [project.urls]
@@ -108,3 +111,6 @@ yamcs_flatsat_utils = ["py.typed"]
 
 [tool.coverage.run]
 omit=["src/yamcs_flatsat_utils/_version.py"]
+
+[project.scripts]
+candump-format = "scripts.candump:main"

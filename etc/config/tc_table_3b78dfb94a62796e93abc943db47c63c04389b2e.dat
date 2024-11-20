@@ -1,0 +1,113 @@
+CCF_CNAME	CCF_DESCR	CCF_DESCR2	CCF_CRITICAL	CCF_PKTID	CCF_TYPE	CCF_STYPE	CCF_APID	CCF_NPARS	CCF_PLAN	CCF_EXEC	CCF_ILSCOPE	CCF_ILSTAGE	CCF_SUBSYS	CCF_HIPRI	CCF_ACK
+ENC45001	DistributeOnOffCommands	The device access subservice supports the capability to distribu	N	NOM_TC	2	1	10	2	A	Y	N	C	140	N	0
+ENC45002	DistRegisterLoadCmds	The device access subservice supports the capability to distribu	N	NOM_TC	2	2	10	3	A	Y	N	C	140	N	0
+ENC45003	DistRegisterDumpCmds	The device access subservice supports the capability to distribu	N	NOM_TC	2	5	10	2	A	Y	N	C	140	N	0
+ENC45004	AcquireDatPhysicalDev	The device access subservice supports the capability to acquire	N	NOM_TC	2	8	10	4	A	Y	N	C	140	N	0
+ENC45005	CreateHkSid	Telecommand that creates a housekeeping parameter report structu	N	NOM_TC	3	1	10	8	A	Y	N	C	140	N	0
+ENC45006	DeleteHkSid	Telecommand that deletes a housekeeping parameter report structu	N	NOM_TC	3	3	10	2	A	Y	N	C	140	N	0
+ENC45007	EnPeriodicGenRepHkSid	Telecommand that enables the periodic generation of housekeeping	N	NOM_TC	3	5	10	2	A	Y	N	C	140	N	0
+ENC45008	DisPeriodicGenRepHkSid	Telecommand that disables the periodic generation of housekeepin	N	NOM_TC	3	6	10	2	A	Y	N	C	140	N	0
+ENC45009	ReportHkSid	Telecommand that requests a report of housekeeping parameter rep	N	NOM_TC	3	9	10	2	A	Y	N	C	140	N	0
+ENC45010	EnableReportGenEventId	Represents the enable of the report generation of event definiti	N	NOM_TC	5	5	10	2	A	Y	N	C	140	N	0
+ENC45011	DisableReportGenEventId	Represents the disable of the report generation of event definit	N	NOM_TC	5	6	10	2	A	Y	N	C	140	N	0
+ENC45012	ResetEventCounters	Sets the event counters to 0	N	NOM_TC	5	128	10	0	A	Y	N	C	140	N	0
+ENC45013	LoadRawMemoryDataAreas	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	2	10	6	A	Y	N	C	140	N	0
+ENC45014	DumpRawMemoryData	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	5	10	4	A	Y	N	C	140	N	0
+ENC45015	CheckRawMemoryData	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	9	10	4	A	Y	N	C	140	N	0
+ENC45016	AbortAllMemoryDumps	Represents the capability of raw data memory management subservi	N	NOM_TC	6	12	10	0	A	Y	N	C	140	N	0
+ENC45017	EnableScrubbingMemory	Represents the capability of memory configuration subservice for	N	NOM_TC	6	13	10	1	A	Y	N	C	140	N	0
+ENC45018	DisableScrubbingMemory	Represents the capability of memory configuration subservice for	N	NOM_TC	6	14	10	1	A	Y	N	C	140	N	0
+ENC45019	LoRaMeDaArByRe	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	19	10	7	A	Y	N	C	140	N	0
+ENC45020	DumpRawMemoryDataToFile	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	20	10	6	A	Y	N	C	140	N	0
+ENC45021	SetTimeGenRate	Represents the capability of time report subservice for setting	N	NOM_TC	9	1	0	1	A	Y	N	C	140	N	0
+ENC45022	SetObtAbsoluteValue	set the on-board time with absolute value	N	NOM_TC	9	128	0	1	A	Y	N	C	140	N	0
+ENC45023	SetObtRelativeValue	set the on-board time with relative value	N	NOM_TC	9	129	0	1	A	Y	N	C	140	N	0
+ENC45024	EnTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	1	10	0	A	Y	N	C	140	N	0
+ENC45025	DiTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	2	10	0	A	Y	N	C	140	N	0
+ENC45026	ReTiBaScExFu	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	3	10	0	A	Y	N	C	140	N	0
+ENC45027	InAcTiBaSc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	4	10	4	A	Y	N	C	140	N	0
+ENC45028	DeTiBaScAcByReId	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	5	10	6	A	Y	N	C	140	N	0
+ENC45029	TiShScAcByReId	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	7	10	7	A	Y	N	C	140	N	0
+ENC45030	DeReTiBaScAcByReId	Request to detail-report time-based scheduled activities identif	N	NOM_TC	11	9	10	6	A	Y	N	C	140	N	0
+ENC45031	TiShAlScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	15	10	1	A	Y	N	C	140	N	0
+ENC45032	DeReAlTiBaScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	16	10	0	A	Y	N	C	140	N	0
+ENC45033	SuReAlTiBaScAc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	17	10	0	A	Y	N	C	140	N	0
+ENC45034	ReStTiBaSuSc	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	18	10	0	A	Y	N	C	140	N	0
+ENC45035	EnTimeBasedSubSchedule	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	20	10	2	A	Y	N	C	140	N	0
+ENC45036	DisTimeBasedSubSchedule	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	21	10	2	A	Y	N	C	140	N	0
+ENC45037	EnParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	1	10	2	A	Y	N	C	140	N	0
+ENC45038	DisParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	2	10	2	A	Y	N	C	140	N	0
+ENC45039	ChangeMaxTransRepDelay	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	3	10	1	A	Y	N	C	140	N	0
+ENC45040	DelAllParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	4	10	0	A	Y	N	C	140	N	0
+ENC45041	DelParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	6	10	2	A	Y	N	C	140	N	0
+ENC45042	RepParamMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	8	10	2	A	Y	N	C	140	N	0
+ENC45043	ReportOutOfLimits	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	10	10	0	A	Y	N	C	140	N	0
+ENC45044	RepStatPmonDef	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	13	10	0	A	Y	N	C	140	N	0
+ENC45045	EnParamMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	15	10	0	A	Y	N	C	140	N	0
+ENC45046	DisParamMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	16	10	0	A	Y	N	C	140	N	0
+ENC45047	EnFunctionalMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	17	10	0	A	Y	N	C	140	N	0
+ENC45048	DisFunctionalMonFn	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	18	10	0	A	Y	N	C	140	N	0
+ENC45049	EnFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	19	10	2	A	Y	N	C	140	N	0
+ENC45050	DisFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	20	10	2	A	Y	N	C	140	N	0
+ENC45051	DelFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	24	10	2	A	Y	N	C	140	N	0
+ENC45052	RepFunctionalMonDefs	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	25	10	2	A	Y	N	C	140	N	0
+ENC45053	RepStatFunctionalMonDef	Represents the capability of On-Board Monitoring subservice for	N	NOM_TC	12	27	10	0	A	Y	N	C	140	N	0
+ENC45054	AdReToApFwCtCo	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	1	10	7	A	Y	N	C	140	N	0
+ENC45055	DeReFrApFwCtCo	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	2	10	7	A	Y	N	C	140	N	0
+ENC45056	ReportApidFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	3	10	0	A	Y	N	C	140	N	0
+ENC45057	AddSidsToHkFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	5	10	6	A	Y	N	C	140	N	0
+ENC45058	DelSidsFromHkFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	6	10	5	A	Y	N	C	140	N	0
+ENC45059	ReportHkFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	7	10	0	A	Y	N	C	140	N	0
+ENC45060	DeEiFrEvFwCtCo	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	13	10	5	A	Y	N	C	140	N	0
+ENC45061	AddEidsToEvtFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	14	10	5	A	Y	N	C	140	N	0
+ENC45062	ReportEidFwdCtrlConf	Represents the capability of the real-time forwarding control su	N	NOM_TC	14	15	10	0	A	Y	N	C	140	N	0
+ENC45063	PeAnArYoAlCoTe	Represents the capability of test service for performing are-you	N	NOM_TC	17	1	10	0	A	Y	N	C	140	N	0
+ENC45064	AddEventActionDefinition	Represents the capability of event-action subservice for adding	N	NOM_TC	19	1	10	5	A	Y	N	C	140	N	0
+ENC45065	DelEvActionDefs	Represents the capability of event-action subservice for deletin	N	NOM_TC	19	2	10	4	A	Y	N	C	140	N	0
+ENC45066	DelAllEvActionDefs	Represents the capability of event-action subservice for deletin	N	NOM_TC	19	3	10	0	A	Y	N	C	140	N	0
+ENC45067	EnEvActionDefs	Represents the capability of event-action subservice to enable s	N	NOM_TC	19	4	10	4	A	Y	N	C	140	N	0
+ENC45068	DisEvActionDefs	Represents the capability of event-action subservice to disable	N	NOM_TC	19	5	10	4	A	Y	N	C	140	N	0
+ENC45069	RepStatEachEvActionDefs	Represents the capability of event-action subservice for request	N	NOM_TC	19	6	10	0	A	Y	N	C	140	N	0
+ENC45070	EnEvActionFn	Represents the capability of event-action subservice to enable e	N	NOM_TC	19	8	10	0	A	Y	N	C	140	N	0
+ENC45071	DisEvActionFn	Represents the capability of event-action subservice to disable	N	NOM_TC	19	9	10	0	A	Y	N	C	140	N	0
+ENC45072	RepEvActionDefs	Represents the capability of event-action subservice to request	N	NOM_TC	19	10	10	4	A	Y	N	C	140	N	0
+ENC45073	ReportParameterValues	Represents the capability of on-board parameter management servi	N	NOM_TC	20	1	10	2	A	Y	N	C	140	N	0
+ENC45074	ChangeRawMemParamDefs	Represents the capability of on-board parameter management servi	N	NOM_TC	20	4	10	6	A	Y	N	C	140	N	0
+ENC45075	RepParamDefs	Represents the capability of on-board parameter management servi	N	NOM_TC	20	6	10	2	A	Y	N	C	140	N	0
+ENC45076	DirectLoadReqSeq	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	1	10	4	A	Y	N	C	140	N	0
+ENC45077	DiLoReSeByRe	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	2	10	3	A	Y	N	C	140	N	0
+ENC45078	UnloadRequestSequence	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	3	10	1	A	Y	N	C	140	N	0
+ENC45079	ActivateRequestSequence	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	4	10	1	A	Y	N	C	140	N	0
+ENC45080	AbortRequestSequence	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	5	10	1	A	Y	N	C	140	N	0
+ENC45081	RepExeStatReqSeq	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	6	10	0	A	Y	N	C	140	N	0
+ENC45082	LoByReAcReSe	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	8	10	3	A	Y	N	C	140	N	0
+ENC45083	ChecksumRequestSequence	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	9	10	1	A	Y	N	C	140	N	0
+ENC45084	RepContentReqSeq	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	11	10	1	A	Y	N	C	140	N	0
+ENC45085	AbortAllReqSeqsRep	Represents the capability of TC Request Sequencing subservice to	N	NOM_TC	21	13	10	0	A	Y	N	C	140	N	0
+ENC45086	CreateAFile	Represents the capability of the file handling subservice to cre	N	NOM_TC	23	1	10	3	A	Y	N	C	140	N	0
+ENC45087	DeleteAFile	Represents the capability of the file handling subservice to del	N	NOM_TC	23	2	10	2	A	Y	N	C	140	N	0
+ENC45088	RepTheAttributesOfAFile	Represents the capability of the file handling subservice to req	N	NOM_TC	23	3	10	2	A	Y	N	C	140	N	0
+ENC45089	CreateADirectory	Represents the capability of the file handling subservice to cre	N	NOM_TC	23	9	10	2	A	Y	N	C	140	N	0
+ENC45090	DeleteADirectory	Represents the capability of the file handling subservice to del	N	NOM_TC	23	10	10	2	A	Y	N	C	140	N	0
+ENC45091	RenameADirectory	Represents the capability of the file handling subservice to cha	N	NOM_TC	23	11	10	3	A	Y	N	C	140	N	0
+ENC45092	SummaryReport	Represents the file handling subservice capability to summary-re	N	NOM_TC	23	12	10	1	A	Y	N	C	140	N	0
+ENC45093	CopyAFile	Represents the capability of the file handling subservice to cop	N	NOM_TC	23	14	10	5	A	Y	N	C	140	N	0
+ENC45094	MoveAFile	Represents the capability of the file handling subservice to mov	N	NOM_TC	23	15	10	5	A	Y	N	C	140	N	0
+ENC45095	AdReToApStCtCo	Represents the capability of the file based packet selection sub	N	NOM_TC	115	3	10	9	A	Y	N	C	140	N	0
+ENC45096	DeReFrApStCtCo	Represents the capability of the file based packet selection sub	N	NOM_TC	115	4	10	9	A	Y	N	C	140	N	0
+ENC45097	ReportApidStrgCtrlConf	Represents the capability of the file based packet selection sub	N	NOM_TC	115	5	10	2	A	Y	N	C	140	N	0
+ENC45098	ReStDoOfFo	Represents the capability of the file based packet storage and r	N	NOM_TC	115	15	10	2	A	Y	N	C	140	N	0
+ENC45099	SuspendDownloadOfFolder	Represents the capability of the file based packet storage and r	N	NOM_TC	115	16	10	2	A	Y	N	C	140	N	0
+ENC45100	AddSidsToHkStrgCtrlConf	Represents the capability of the file based packet selection sub	N	NOM_TC	115	29	10	8	A	Y	N	C	140	N	0
+ENC45101	DeSiFrHkStCtCo	Represents the capability of the file based packet selection sub	N	NOM_TC	115	30	10	7	A	Y	N	C	140	N	0
+ENC45102	DeEiFrEvStCtCo	Represents the capability of the file based packet selection sub	N	NOM_TC	115	33	10	7	A	Y	N	C	140	N	0
+ENC45103	AddEidsToEvtStrgCtrlConf	Represents the capability of the file based packet selection sub	N	NOM_TC	115	34	10	7	A	Y	N	C	140	N	0
+ENC45104	ReportHkStrgCtrlConf	Represents the capability of the file based packet selection sub	N	NOM_TC	115	35	10	2	A	Y	N	C	140	N	0
+ENC45105	ReportEidStrgCtrlConf	Represents the capability of the file based packet selection sub	N	NOM_TC	115	39	10	2	A	Y	N	C	140	N	0
+ENC45106	ChLaDoFiNa	Represents the capability of the file based storage and retrieva	N	NOM_TC	115	128	10	3	A	Y	N	C	140	N	0
+ENC45107	ReNaLaDoFi	Represents the capability of the file based storage and retrieva	N	NOM_TC	115	129	10	2	A	Y	N	C	140	N	0
+ENC45108	InitiateTransaction	Represents the capability of the file transfer subservice to ini	N	NOM_TC	123	1	10	6	A	Y	N	C	140	N	0
+ENC45109	AbandonTransaction	Represents the capability of the file transfer subservice to aba	N	NOM_TC	123	2	10	2	A	Y	N	C	140	N	0
+ENC45110	CancelTransaction	Represents the capability of the file transfer subservice to can	N	NOM_TC	123	3	10	2	A	Y	N	C	140	N	0
+ENC45111	SuspendTransaction	Represents the capability of the file transfer subservice to sus	N	NOM_TC	123	4	10	2	A	Y	N	C	140	N	0
+ENC45112	ResumeTransaction	Represents the capability of the file transfer subservice to res	N	NOM_TC	123	5	10	2	A	Y	N	C	140	N	0

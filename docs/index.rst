@@ -1,3 +1,4 @@
+
 .. yamcs_flatsat_utils documentation main file.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -15,7 +16,7 @@ create and activate a new environment.
 
 .. code-block:: console
 
-   >> conda create env -n <env_name> python=3.10
+   >> conda create env -n <env_name> python=3.12
    >> conda activate <env_name>
 
 
@@ -41,10 +42,35 @@ Notes:
    the Python Project Template documentation on
    `Sphinx and Python Notebooks <https://lincc-ppt.readthedocs.io/en/latest/practices/sphinx.html#python-notebooks>`_.
 
-
 .. toctree::
    :hidden:
 
    Home page <self>
    API Reference <autoapi/index>
-   Notebooks <notebooks>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Yamcs
+   :hidden:
+
+   Yamcs-Quickstart-Interface </yamcs/Quickstar-yamcs-interface>
+   Yamcs-IO-Interface </yamcs/yamcs-interface>
+   Yamcs-Client </yamcs/yamcs-client>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: How To
+   :hidden:
+
+   How To - Manage Issue Reports </HowTo/HowToIssueProcess>
+   How To - OBC software </HowTo/Obc_software_installations>
+   How To - Skylab GUI </HowTo/HowToSkyEGSE>
+   How To - SSH Connection to FlatSat PC </HowTo/HowToSshFlatSatPC>
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Learning
+  :hidden:
+
+  Template "How to" </learning/template>
+  Ressources </learning/ressources>

@@ -65,7 +65,13 @@ def process_data_field_tm(line: str, doplot: bool = True) -> Optional[dict[str, 
 
         # If doplot is True, print the extracted values for PUS type and subtype
         if doplot:
-            print(f"DATA FIELD : (PUS_Type: {service_type_id}, PUS_Sub_Type: {message_subtype_id})")
+            print(
+                f"DATA FIELD : (PUS_Type: {service_type_id},"
+                f"PUS_Sub_Type: {message_subtype_id}),"
+                f"TM_Counter: {message_type_counter},"
+                f"Destination_ID: {destination_id},"
+                f"TM_PUS_version: {tm_packet_pus_version_number}"
+            )
 
         return res_dict
 

@@ -1,0 +1,3 @@
+[submodule "endurance-flight-software-csw"]
+	path = endurance-flight-software-csw
+	url = https://github.com/infiniteorbits/endurance-flight-software-csw.git

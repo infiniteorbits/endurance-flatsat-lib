@@ -1,4 +1,4 @@
-"""This module is making correspondance betweens ids and systems related to the ICD"""
+from lib_utils.exception import ApidParameterError
 
 # Define all dictionaries
 lookup_tables = {
@@ -80,3 +80,34 @@ def lookup_value(keyword: str, binary_value: int) -> str:
         return "Unrecognized " + keyword.capitalize()
 
     return "Invalid keyword provided"
+
+
+def get_apid_number(apid_name: str) -> int:
+    """
+    Returns the APID number corresponding to the given name, tolerating variations in case and spaces.
+
+    Args:
+        apid_name (str): The name of the APID to look up.
+
+    Returns:
+        int: The APID number if found.
+
+    Raises:
+        ApidParameterError: If the APID name is not found in the lookup table.
+    """
+    # Normalize user input: remove spaces and convert to lowercase
+    normalized_apid_name = apid_name.strip().lower().replace(" ", "")
+
+    # Create a normalized version of the dictionary for lookup
+    normalized_lookup = {
+        key.strip().lower().replace(" ", ""): value for key, value in lookup_tables["apid"].items()
+    }
+
+    # Look up the APID number in the normalized dictionary
+    apid_number = normalized_lookup.get(normalized_apid_name)
+
+    if apid_number is None:
+        raise ApidParameterError(f"APID '{apid_name}' not found.")
+
+    print(f"The APID number for '{apid_name}' is {apid_number}.")
+    return apid_number

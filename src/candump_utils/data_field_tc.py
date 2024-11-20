@@ -65,6 +65,7 @@ def process_data_field_tc(line: str, doplot: bool = True) -> Optional[dict[str, 
             print(
                 f"DATA FIELD : (AckFlags: {acknowledgements_flags}, "
                 f"PUS_Type: {service_type_id}, PUS_Sub_Type: {message_subtype_id})"
+                f"TC_PUS_version: {tc_packet_pus_version_number}"
             )
 
         return res_dict
