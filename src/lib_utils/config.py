@@ -6,30 +6,6 @@ from typing import Optional
 
 import pandas as pd
 
-ccf_fields = [
-    "CCF_CNAME",
-    "CCF_DESCR",
-    "CCF_DESCR2",
-    "CCF_CTYPE",
-    "CCF_CRITICAL",
-    "CCF_PKTID",
-    "CCF_TYPE",
-    "CCF_STYPE",
-    "CCF_APID",
-    "CCF_NPARS",
-    "CCF_PLAN",
-    "CCF_EXEC",
-    "CCF_ILSCOPE",
-    "CCF_ILSTAGE",
-    "CCF_SUBSYS",
-    "CCF_HIPRI",
-    "CCF_MAPID",
-    "CCF_DEFSET",
-    "CCF_RAPID",
-    "CCF_ACK",
-    "CCF_SUBSCHEDID",
-]
-
 
 def get_project_root() -> Path:
     """get_project_root _summary_
@@ -157,6 +133,8 @@ def create_commands(path: Optional[str] = None) -> None:
     if not ccf_path.exists():
         raise FileNotFoundError(f"CCF file not found at: {ccf_path}")
 
+    ccf_fields = get_fields("ccf")
+
     # Read and process the CCF data
     print(f"Reading CCF data from: {ccf_path}")
     mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t").dropna(axis=1)
@@ -187,3 +165,44 @@ def get_submodule_commit(submodule_path: Path) -> str:
         return commit
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Failed to retrieve the commit for the submodule: {submodule_path}") from e
+
+
+def get_fields(name: str) -> list[str]:
+    """
+    Reads a list of fields from a configuration file located in the 'etc/config' directory.
+
+    Parameters
+    ----------
+    name : str
+        The base name of the field file (e.g., "ccf" will look for "ccf_fields.ini").
+
+    Returns
+    -------
+    list[str]
+        A list of fields specified in the configuration file.
+
+    Raises
+    ------
+    FileNotFoundError
+        If the configuration file does not exist.
+    RuntimeError
+        If the configuration file is malformed or missing the 'fields' key.
+    """
+    repo_root = get_project_root()
+    config_dir = repo_root / "etc" / "config"
+    config_file = config_dir / f"{name}_fields.ini"
+
+    if not config_file.exists():
+        raise FileNotFoundError(f"Configuration file not found: {config_file}")
+
+    config = configparser.ConfigParser()
+    config.read(config_file)
+
+    try:
+        fields = config.get(f"{name.upper()}_FIELDS", "fields").split(", ")
+        return fields
+    except (configparser.NoSectionError, configparser.NoOptionError) as e:
+        raise RuntimeError(
+            f"Failed to load fields from {config_file}."
+            f"Ensure it contains a '{name.upper()}_FIELDS' section with a 'fields' key."
+        ) from e
