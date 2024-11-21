@@ -23,7 +23,7 @@ For more information about the project template see the
 Ensure that you clone the project with the submodule by doing :
 
 ```
-git clone https://<USERNAME>:<TOKEN>@github.com/infiniteorbits/endurance-flatsat-lib.git --recursive-submodules
+git clone https://<USERNAME>:<TOKEN>@github.com/infiniteorbits/endurance-flatsat-lib.git --recurse-submodules
 ```
 
 Where the Token is created in your personnal Settings > Developper settings > Personnal access tokens > Tokens (classic)
@@ -47,6 +47,12 @@ development using the following commands:
 >> pip install -e .'[dev]'
 >> pre-commit install
 >> conda install pandoc
+```
+
+For implementing also the library, please install and set up pre-commit :
+```
+>> pip install pre-commit
+>> pre-commit install
 ```
 
 Notes:
