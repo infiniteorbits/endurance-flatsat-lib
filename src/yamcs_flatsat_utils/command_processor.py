@@ -8,8 +8,10 @@ from yamcs.client import ContainerSubscription, ParameterSubscription, Verificat
 from yamcs.tmtc.model import ContainerData, IssuedCommand  # type: ignore
 
 from lib_utils.addr_apid import get_apid_number
-from lib_utils.config import create_commands, get_project_root, read_config
+from lib_utils.config import create_table, get_project_root, read_config
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
+
+FIELDS = ["ccf", "cdf"]
 
 
 def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:
@@ -26,7 +28,7 @@ def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:
     """
     config = read_config({"Submodule": ["name", "commit"]})
     expected_commit = config["Submodule.commit"]
-    dat_file = f"tc_table_{expected_commit}.dat"
+    dat_file = f"ccf_table_{expected_commit}.dat"
 
     # Lire le fichier CSV dans un DataFrame
     path_df = os.path.join(get_project_root(), "etc/config/", dat_file)
@@ -37,6 +39,38 @@ def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:
 
     # Retourner le nom correspondant s'il existe, sinon une chaîne vide
     return result.iloc[0]["CCF_CNAME"] if not result.empty else ""
+
+
+def get_cparameters(ccf_type: int = 0, ccf_stype: int = 0) -> Optional[list]:
+    """
+    Retrieve the CCF_CNAME based on CCF_TYPE and CCF_STYPE from a CSV file.
+
+    Args:
+    dat_file (str): The path to the CSV file containing the data.
+    ccf_type (int): The type to search for.
+    ccf_stype (int): The subtype to search for.
+
+    Returns:
+    str: The CCF_CNAME if a match is found, otherwise an empty string.
+    """
+
+    name = get_cname(ccf_type, ccf_stype)
+
+    config = read_config({"Submodule": ["name", "commit"]})
+    expected_commit = config["Submodule.commit"]
+    dat_file = f"cdf_table_{expected_commit}.dat"
+
+    # Lire le fichier CSV dans un DataFrame
+    path_df = os.path.join(get_project_root(), "etc/config/", dat_file)
+    df = pd.read_csv(path_df, sep="\t")
+
+    # Filtrer les résultats en fonction de CCF_TYPE et CCF_STYPE
+    result = df[(df["CDF_CNAME"] == name)]
+
+    if result.value_counts().count() == 0:
+        return None
+
+    return list(result.CDF_PNAME.to_dict().values())
 
 
 class CommandProcessor:
@@ -54,7 +88,7 @@ class CommandProcessor:
         """
         self.processor = interface.get_processor()
         self.listen_to_command_history()
-        create_commands()  # That command creates etc/config/tc_tables.dat
+        [create_table(field) for field in FIELDS]
 
     def issue_command_yamcs(
         self,

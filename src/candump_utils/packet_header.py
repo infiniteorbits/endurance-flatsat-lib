@@ -85,7 +85,7 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
             "apid": apid,
             "apid_sys": lookup_value("apid", apid),
             "grouping_flags": grouping_flags,
-            "Sequence flag": lookup_value("sequence flags", grouping_flags),
+            "Sequence flag": lookup_value("sequence_flags", grouping_flags),
             "source_sequence_count": source_sequence_count,
             "packet_length": packet_length,
             "counter": counter,
@@ -95,7 +95,7 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
         if doplot:
             print(
                 f"Packet Header: (type: {str_type}, Apid: {apid}({lookup_value('apid', apid)}), "
-                f"Sequence flag: {lookup_value('sequence flags', grouping_flags)}, "
+                f"Sequence flag: {lookup_value('sequence_flags', grouping_flags)}, "
                 f"source_sequence_count: {source_sequence_count}, packet_length: {packet_length}, "
                 f"counter: {counter})"
             )
