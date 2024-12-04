@@ -89,15 +89,17 @@ def read_config(requested_values: Optional[dict] = None) -> dict[str, str]:  # t
     return config_values
 
 
-def create_commands(path: Optional[str] = None) -> None:
+def create_table(name: str, path: Optional[str] = None) -> None:
     """
-    Creates a correspondence table for TC names and PUS types.
+    Creates a correspondence table for a given data type (e.g., CCF or CDF).
     The table's filename includes the SHA1 of the submodule commit.
 
     Parameters
     ----------
+    name : str
+        The name of the data type (e.g., "ccf" or "cdf").
     path : Optional[str]
-        Custom path to the CCF data file. If not provided, uses the default path
+        Custom path to the data file. If not provided, uses the default path
         derived from the submodule and configuration.
     """
     repo_root = get_project_root()
@@ -115,36 +117,35 @@ def create_commands(path: Optional[str] = None) -> None:
     if current_commit != expected_commit:
         raise ValueError(f"Submodule commit mismatch. Expected: {expected_commit}, Found: {current_commit}")
 
-    # Name of the TC table file with the commit SHA1
-    tc_table_name = f"tc_table_{current_commit}.dat"
-    tc_table_path = repo_root / "etc" / "config" / tc_table_name
+    # Name of the output table file
+    table_name = f"{name}_table_{current_commit}.dat"
+    table_path = repo_root / "etc" / "config" / table_name
 
     # Check if the table already exists
-    if tc_table_path.exists():
-        print(f"TC table already exists: {tc_table_path}")
+    if table_path.exists():
+        print(f"{name.upper()} table already exists: {table_path}")
         return
 
-    # Determine the path to the CCF file
-    if path is None:  # noqa: SIM108
-        ccf_path = submodule_path / "mdb" / "ccf.dat"
+    # Determine the path to the data file
+    if path is None:
+        data_file_path = submodule_path / "mdb" / f"{name}.dat"
     else:
-        ccf_path = Path(path)
+        data_file_path = Path(path)
 
-    if not ccf_path.exists():
-        raise FileNotFoundError(f"CCF file not found at: {ccf_path}")
+    if not data_file_path.exists():
+        raise FileNotFoundError(f"{name.upper()} file not found at: {data_file_path}")
 
-    ccf_fields = get_fields("ccf")
+    fields = get_fields(name)
 
-    # Read and process the CCF data
-    print(f"Reading CCF data from: {ccf_path}")
-    mdb = pd.read_table(ccf_path, names=ccf_fields, sep="\t").dropna(axis=1)
+    # Read and process the data
+    print(f"Reading {name.upper()} data from: {data_file_path}")
+    data = pd.read_table(data_file_path, names=fields, sep="\t").dropna(axis=1)
 
     # Save the processed data with the commit SHA1 in the filename
-    tc_table_path.parent.mkdir(parents=True, exist_ok=True)
-    mdb.to_csv(tc_table_path, sep="\t", index=False)
+    table_path.parent.mkdir(parents=True, exist_ok=True)
+    data.to_csv(table_path, sep="\t", index=False)
 
-    print(f"TC table created at: {tc_table_path}")
-
+    print(f"{name.upper()} table created at: {table_path}")
 
 def get_submodule_commit(submodule_path: Path) -> str:
     """
@@ -169,28 +170,29 @@ def get_submodule_commit(submodule_path: Path) -> str:
 
 def get_fields(name: str) -> list[str]:
     """
-    Reads a list of fields from a configuration file located in the 'etc/config' directory.
+    Reads a list of fields from a unified configuration file located in the 'etc/config' directory.
 
     Parameters
     ----------
     name : str
-        The base name of the field file (e.g., "ccf" will look for "ccf_fields.ini").
+        The name of the section in the configuration file corresponding to the fields
+        (e.g., "ccf" for the section "[CCF_FIELDS]").
 
     Returns
     -------
     list[str]
-        A list of fields specified in the configuration file.
+        A list of fields specified under the corresponding section in the configuration file.
 
     Raises
     ------
     FileNotFoundError
         If the configuration file does not exist.
     RuntimeError
-        If the configuration file is malformed or missing the 'fields' key.
+        If the configuration file is malformed, missing the section, or the 'fields' key.
     """
     repo_root = get_project_root()
     config_dir = repo_root / "etc" / "config"
-    config_file = config_dir / f"{name}_fields.ini"
+    config_file = config_dir / "fields.ini"  # Unified file for all sections.
 
     if not config_file.exists():
         raise FileNotFoundError(f"Configuration file not found: {config_file}")
@@ -198,11 +200,12 @@ def get_fields(name: str) -> list[str]:
     config = configparser.ConfigParser()
     config.read(config_file)
 
+    section = f"{name.upper()}_FIELDS"
     try:
-        fields = config.get(f"{name.upper()}_FIELDS", "fields").split(", ")
+        fields = config.get(section, "fields").split(", ")
         return fields
     except (configparser.NoSectionError, configparser.NoOptionError) as e:
         raise RuntimeError(
-            f"Failed to load fields from {config_file}."
-            f"Ensure it contains a '{name.upper()}_FIELDS' section with a 'fields' key."
+            f"Failed to load fields from section '{section}' in {config_file}; "
+            f"ensure it contains a section '{section}' with a 'fields' key."
         ) from e
