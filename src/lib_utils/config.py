@@ -29,7 +29,7 @@ def create_config() -> None:
     config["Interface"] = {"host": "localhost:8090", "instance": "myproject", "processor": "realtime"}
     config["Submodule"] = {
         "name": "endurance-flight-software-csw",
-        "commit": "3b78dfb94a62796e93abc943db47c63c04389b2e",
+        "commit": "6d78eb5ccc35db38d5b6b384364a4a8ae3693f5d",
     }
 
     # Define the path to the configuration file in the 'src' directory of the project

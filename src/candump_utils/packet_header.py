@@ -3,6 +3,7 @@
 from typing import Any, Optional
 
 from lib_utils.addr_apid import lookup_value
+from lib_utils.endianness import convert_big_to_little_endian
 
 
 def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[str, Any]]:
@@ -51,12 +52,15 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
         parts = line.split(None, 3)
         if len(parts) < 3:
             return None
+        
+        bytes_data = convert_big_to_little_endian(parts[3])
 
-        bytes_data = int(parts[3].replace(" ", "").replace("\n", ""), 2)
+
+        bytes_data = int(bytes_data.replace(" ", "").replace("\n", ""), 2)
 
         if len(line.replace(" ", "").replace("\n", "")) < 8**2:
             return None
-
+        
         prefix = bytes_data >> 56  # 8 bits
         version_number = (bytes_data >> 53) & 0x7  # 3 bits
         type_tmtc = (bytes_data >> 52) & 0x1  # 1 bit
