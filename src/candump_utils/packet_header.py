@@ -52,15 +52,17 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
         parts = line.split(None, 3)
         if len(parts) < 3:
             return None
-        
-        bytes_data = convert_big_to_little_endian(parts[3])
 
+        binary_data = convert_big_to_little_endian(parts[3])
 
-        bytes_data = int(bytes_data.replace(" ", "").replace("\n", ""), 2)
+        binary_data = binary_data.replace(" ", "").replace("\n", "")
 
-        if len(line.replace(" ", "").replace("\n", "")) < 8**2:
+        if len(binary_data) < 8 * 2:  # Ensure at least 8 bytes (64 bits) for processing
             return None
-        
+
+        # Convert binary string to integer
+        bytes_data = int(binary_data, 2)
+
         prefix = bytes_data >> 56  # 8 bits
         version_number = (bytes_data >> 53) & 0x7  # 3 bits
         type_tmtc = (bytes_data >> 52) & 0x1  # 1 bit

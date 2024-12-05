@@ -101,6 +101,8 @@ def create_table(name: str, path: Optional[str] = None) -> None:
     path : Optional[str]
         Custom path to the data file. If not provided, uses the default path
         derived from the submodule and configuration.
+    Returns:
+        None
     """
     repo_root = get_project_root()
     config = read_config({"Submodule": ["name", "commit"]})
@@ -127,10 +129,7 @@ def create_table(name: str, path: Optional[str] = None) -> None:
         return
 
     # Determine the path to the data file
-    if path is None:
-        data_file_path = submodule_path / "mdb" / f"{name}.dat"
-    else:
-        data_file_path = Path(path)
+    data_file_path = submodule_path / "mdb" / f"{name}.dat" if path is None else Path(path)
 
     if not data_file_path.exists():
         raise FileNotFoundError(f"{name.upper()} file not found at: {data_file_path}")
@@ -146,6 +145,7 @@ def create_table(name: str, path: Optional[str] = None) -> None:
     data.to_csv(table_path, sep="\t", index=False)
 
     print(f"{name.upper()} table created at: {table_path}")
+
 
 def get_submodule_commit(submodule_path: Path) -> str:
     """
