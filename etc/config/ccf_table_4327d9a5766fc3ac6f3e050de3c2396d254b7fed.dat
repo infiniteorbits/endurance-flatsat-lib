@@ -19,9 +19,8 @@ ENC45017	EnableScrubbingMemory	Represents the capability of memory configuration
 ENC45018	DisableScrubbingMemory	Represents the capability of memory configuration subservice for	N	NOM_TC	6	14	10	1	A	Y	N	C	140	N	0
 ENC45019	LoRaMeDaArByRe	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	19	10	7	A	Y	N	C	140	N	0
 ENC45020	DumpRawMemoryDataToFile	The raw data memory management subservice supports the capabilit	N	NOM_TC	6	20	10	6	A	Y	N	C	140	N	0
-ENC45021	SetTimeGenRate	Represents the capability of time report subservice for setting	N	NOM_TC	9	1	0	1	A	Y	N	C	140	N	0
-ENC45022	SetObtAbsoluteValue	set the on-board time with absolute value	N	NOM_TC	9	128	0	1	A	Y	N	C	140	N	0
-ENC45023	SetObtRelativeValue	set the on-board time with relative value	N	NOM_TC	9	129	0	1	A	Y	N	C	140	N	0
+ENC45022	SetObtAbsoluteValue	set the on-board time with absolute value	N	NOM_TC	9	128	10	1	A	Y	N	C	140	N	0
+ENC45023	SetObtRelativeValue	set the on-board time with relative value	N	NOM_TC	9	129	10	1	A	Y	N	C	140	N	0
 ENC45024	EnTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	1	10	0	A	Y	N	C	140	N	0
 ENC45025	DiTiBaScExFu	Represents the capability of time-based scheduling subservicefor	N	NOM_TC	11	2	10	0	A	Y	N	C	140	N	0
 ENC45026	ReTiBaScExFu	Represents the capability of time-based scheduling subservice fo	N	NOM_TC	11	3	10	0	A	Y	N	C	140	N	0
