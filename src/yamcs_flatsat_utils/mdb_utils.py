@@ -1,3 +1,4 @@
+from lib_utils.config import process_pas_table_and_merge
 from lib_utils.exception import MdbParameterError
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
@@ -16,6 +17,7 @@ class YamcsMDBInterface:
             interface (YamcsInterface): An instance of YamcsClient to interact with Yamcs.
         """
         self.mdb = interface.get_mdb()
+        self.print_obpids = process_pas_table_and_merge(do_write=False)
 
     def print_space_systems(self) -> None:
         """

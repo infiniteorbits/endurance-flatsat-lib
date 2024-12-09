@@ -11,10 +11,7 @@ from lib_utils.addr_apid import get_apid_number
 from lib_utils.config import create_table, get_project_root, read_config
 from yamcs_flatsat_utils.yamcs_interface import YamcsInterface
 
-FIELDS = ["ccf", "cdf"]
-
-
-FIELDS = ["ccf", "cdf"]
+FIELDS = ["ccf", "cdf", "pas"]
 
 
 def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:

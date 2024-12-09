@@ -2,7 +2,7 @@ import configparser
 import os
 import subprocess
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
 import pandas as pd
 
@@ -14,11 +14,7 @@ def get_project_root() -> Path:
     -------
         _description_
     """
-    current_path = Path.cwd()
-    for parent in current_path.parents:
-        if parent.name == "endurance-flatsat-lib":
-            return parent
-    return current_path
+    return Path(__file__).resolve().parent.parent.parent
 
 
 def create_config() -> None:
@@ -209,3 +205,77 @@ def get_fields(name: str) -> list[str]:
             f"Failed to load fields from section '{section}' in {config_file}; "
             f"ensure it contains a section '{section}' with a 'fields' key."
         ) from e
+
+
+def process_pas_table_and_merge(
+    pas_number: str = "ENKT0021",
+    pas_table_path: Optional[Union[str, Path]] = None,
+    obpid_path: Optional[Union[str, Path]] = None,
+    output_dir: Optional[Path] = None,
+    do_write: bool = False,
+) -> pd.DataFrame:
+    """
+    Process the PAS table and OBPID table, filter data, and merge results.
+
+    Args:
+        pas_number (str): The PAS_NUMBR value to filter on.
+        pas_table_path (Optional[str]): Path to the PAS table file.
+        obpid_path (Optional[str]): Path to the OBPID file.
+        output_dir (Optional[Path]): Directory to save the resulting table (default is repo_root/etc/config).
+        do_write (bool): Whether to write the dataframe to a .dat file.
+
+    Returns:
+        pd.DataFrame: A DataFrame with selected and merged columns.
+
+    Raises:
+        FileNotFoundError: If the specified or default files are not found.
+        ValueError: If the filtering or merging produces unexpected results.
+    """
+
+    current_commit = read_config({"Submodule": ["commit"]})["Submodule.commit"]
+
+    # Resolve paths and ensure proper typing
+    pas_table_path = (
+        Path(pas_table_path)
+        if pas_table_path
+        else get_project_root() / "etc" / "config" / f"pas_table_{current_commit}.dat"
+    )
+    obpid_path = Path(obpid_path) if obpid_path else get_project_root() / "etc" / "config" / "obpid_icd.dat"
+    output_dir = Path(output_dir) if output_dir else get_project_root() / "etc" / "config"
+
+    # Validate file existence
+    for path, name in [(pas_table_path, "PAS table"), (obpid_path, "OBPID table")]:
+        if not path.exists():
+            raise FileNotFoundError(f"{name} file not found: {path}")
+
+    # Load files and drop empty columns
+    pas_table = pd.read_table(str(pas_table_path), sep="\t").dropna(axis=1)
+    obpid_table = pd.read_table(str(obpid_path), sep="\t").dropna(axis=1)
+
+    # Validate required columns
+    required_pas_cols = {"PAS_NUMBR", "PAS_ALVAL"}
+    required_obpid_cols = {"ID", "Name", "Brief", "Size (Bits)"}
+    if not required_pas_cols.issubset(pas_table.columns):
+        raise ValueError(f"PAS table must contain columns: {required_pas_cols}")
+    if not required_obpid_cols.issubset(obpid_table.columns):
+        raise ValueError(f"OBPID table must contain columns: {required_obpid_cols}")
+
+    # Filter PAS table
+    pas_filtered = pas_table[pas_table["PAS_NUMBR"] == pas_number]
+    if pas_filtered.empty:
+        raise ValueError(f"No entries found in PAS table for PAS_NUMBR={pas_number}")
+
+    # Merge tables
+    merged_df = pd.merge(pas_filtered, obpid_table, left_on="PAS_ALVAL", right_on="ID", how="inner")
+
+    # Sort and select columns
+    final_df = merged_df.sort_values(by="ID")[["PAS_ALTXT", "Name", "Brief", "ID", "Size (Bits)"]]
+
+    # Save to output file
+    if do_write:
+        output_dir.mkdir(parents=True, exist_ok=True)  # Ensure output directory exists
+        table_name = f"obpid_table_{current_commit}.dat"
+        output_path = output_dir / table_name
+        final_df.to_csv(output_path, sep="\t", index=False)
+
+    return final_df
