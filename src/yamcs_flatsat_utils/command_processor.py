@@ -1,7 +1,7 @@
 import os
 from binascii import hexlify
 from collections.abc import Callable
-from typing import Optional, Union
+from typing import Any, Optional, Union
 
 import pandas as pd
 from yamcs.client import ContainerSubscription, ParameterSubscription, VerificationConfig  # type: ignore
@@ -95,7 +95,7 @@ class CommandProcessor:
         apid: str,
         tc_type: int,
         tc_stype: int,
-        tc_args: Optional[dict[str, str]] = None,
+        args: tuple[Any, ...],
         ackflags: int = 0,
         monitor: bool = True,
         acknowledgment: Optional[str] = None,
@@ -108,18 +108,31 @@ class CommandProcessor:
             apid (str): Application Process ID for PUS commands.
             tc_type (int): Type of the PUS telecommand.
             tc_stype (int): Subtype of the PUS telecommand.
-            tc_args (dict, optional): Command arguments (default: None).
+            args (tuple): A tuple of arguments to map to parameter names.
             ackflags (int, optional): Acknowledgment flags for the PUS command.
             monitor (bool, optional): If True, monitor the command completion (default: True).
-            acknowledgment (str, optional): Name of the acknowledgment to wait for (e.g., "Acknowledge_Sent").
+            acknowledgment (str, optional): Name of the acknowledgment to wait for.
             disable_verification (bool): If True, disable all verification checks (default: False).
-            custom_verification (VerificationConfig, optional): Custom verification configuration.
-            dry_run (bool): If True, only simulate the command without sending it.
 
         Returns:
             IssuedCommand: The issued command object.
         """
-        tc_args = tc_args or {}
+        # Retrieve parameter names based on tc_type and tc_stype
+        parameter_names = get_cparameters(tc_type, tc_stype)
+        if not parameter_names:
+            raise ValueError(f"No parameters found for type={tc_type}, subtype={tc_stype}")
+
+        # Validate that the number of arguments matches the number of parameters
+        if len(parameter_names) != len(args):
+            raise ValueError(
+                f"Mismatch: {len(parameter_names)} parameters,\
+                    but {len(args)} arguments provided."
+            )
+
+        # Map arguments to parameter names
+        tc_args = dict(zip(parameter_names, args, strict=False))
+
+        # Command setup
         apid_number = get_apid_number(apid)
         command_name = "/MIB/" + get_cname(ccf_type=tc_type, ccf_stype=tc_stype)
 
