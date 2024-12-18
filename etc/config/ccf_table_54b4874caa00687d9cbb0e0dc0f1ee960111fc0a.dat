@@ -1,8 +1,7 @@
 CCF_CNAME	CCF_DESCR	CCF_DESCR2	CCF_CRITICAL	CCF_PKTID	CCF_TYPE	CCF_STYPE	CCF_APID	CCF_NPARS	CCF_PLAN	CCF_EXEC	CCF_ILSCOPE	CCF_ILSTAGE	CCF_SUBSYS	CCF_HIPRI	CCF_ACK
-ENC45001	DistributeOnOffCommands	The device access subservice supports the capability to distribu	N	NOM_TC	2	1	10	2	A	Y	N	C	140	N	0
-ENC45002	DistRegisterLoadCmds	The device access subservice supports the capability to distribu	N	NOM_TC	2	2	10	3	A	Y	N	C	140	N	0
-ENC45003	DistRegisterDumpCmds	The device access subservice supports the capability to distribu	N	NOM_TC	2	5	10	2	A	Y	N	C	140	N	0
-ENC45004	AcquireDatPhysicalDev	The device access subservice supports the capability to acquire	N	NOM_TC	2	8	10	4	A	Y	N	C	140	N	0
+ENC45113	TmtcCanMessages	The device access subservice supports the capability to distribu	N	NOM_TC	2	128	10	1	A	Y	N	C	140	N	0
+ENC45114	CanopenMessages	The device access subservice supports the capability to distribu	N	NOM_TC	2	130	10	1	A	Y	N	C	140	N	0
+ENC45115	EthernetMessages	The device access subservice supports the capability to distribu	N	NOM_TC	2	132	10	1	A	Y	N	C	140	N	0
 ENC45005	CreateHkSid	Telecommand that creates a housekeeping parameter report structu	N	NOM_TC	3	1	10	8	A	Y	N	C	140	N	0
 ENC45006	DeleteHkSid	Telecommand that deletes a housekeeping parameter report structu	N	NOM_TC	3	3	10	2	A	Y	N	C	140	N	0
 ENC45007	EnPeriodicGenRepHkSid	Telecommand that enables the periodic generation of housekeeping	N	NOM_TC	3	5	10	2	A	Y	N	C	140	N	0
