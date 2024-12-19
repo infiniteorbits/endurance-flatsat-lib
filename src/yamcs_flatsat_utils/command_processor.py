@@ -32,6 +32,7 @@ def get_cname(ccf_type: int = 0, ccf_stype: int = 0) -> str:
     expected_commit = config["Submodule.commit"]
     dat_file = f"ccf_table_{expected_commit}.dat"
 
+
     # Lire le fichier CSV dans un DataFrame
     path_df = os.path.join(get_project_root(), "etc/config/", dat_file)
     df = pd.read_csv(path_df, sep="\t")

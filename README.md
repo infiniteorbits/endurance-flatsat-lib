@@ -23,7 +23,7 @@ For more information about the project template see the
 Ensure that you clone the project with the submodule by doing :
 
 ```
-git clone https://<USERNAME>:<TOKEN>@github.com/infiniteorbits/endurance-flatsat-lib.git --recursive-submodules
+git clone https://<USERNAME>:<TOKEN>@github.com/infiniteorbits/endurance-flatsat-lib.git --recurse-submodules
 ```
 
 Where the Token is created in your personnal Settings > Developper settings > Personnal access tokens > Tokens (classic)
@@ -36,7 +36,7 @@ environments. If you have conda installed locally, you can run the following to
 create and activate a new environment.
 
 ```
->> conda create env -n <env_name> python=3.10
+>> conda create env -n <env_name> python=3.12
 >> conda activate <env_name>
 ```
 
@@ -47,6 +47,12 @@ development using the following commands:
 >> pip install -e .'[dev]'
 >> pre-commit install
 >> conda install pandoc
+```
+
+For implementing also the library, please install and set up pre-commit :
+```
+>> pip install pre-commit
+>> pre-commit install
 ```
 
 Notes:
