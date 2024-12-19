@@ -1,0 +1,111 @@
+PAS_ALTXT	Name	Brief	ID	Size (Bits)
+TcCoSuAcApTi	TC_Counter_Successful_Acceptance_APID_Time	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	1	16
+TcCoFaAcApTi	TC_Counter_Failed_Acceptance_APID_Time	Acknowledgement counter of the TM[1,2] for APID_Time APID and it will be available for housekeeping.	2	16
+TcCoSuStExApTi	TC_Counter_Successful_Start_Execution_APID_Time	Acknowledgement counter of the TM[1,3] for APID_Time APID and it will be available for housekeeping.	3	16
+TcCoFaStExApTi	TC_Counter_Failed_Start_Execution_APID_Time	Acknowledgement counter of the TM[1,4] for APID_Time APID and it will be available for housekeeping.	4	16
+TcCoSuCoExApTi	TC_Counter_Successful_Comp_Execution_APID_Time	Acknowledgement counter of the TM[1,7] for APID_Time APID and it will be available for housekeeping.	5	16
+TcCoFaCoExApTi	TC_Counter_Failed_Comp_Execution_APID_Time	Acknowledgement counter the TM[1,8] for APID_Time APID and it will be available for housekeeping.	6	16
+TcCounterSucce	TC_Counter_Successful_Acceptance_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	7	16
+TcCounterFaile	TC_Counter_Failed_Acceptance_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,2] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	8	16
+TcCounterSucce	TC_Counter_Successful_Start_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,3] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	9	16
+TcCounterFaile	TC_Counter_Failed_Start_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,4] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	10	16
+TcCounterSucce	TC_Counter_Successful_Comp_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,7] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	11	16
+TcCounterFaile	TC_Counter_Failed_Comp_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter the TM[1,8] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	12	16
+TcCounterSucce	TC_Counter_Successful_Acceptance_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	13	16
+TcCounterFaile	TC_Counter_Failed_Acceptance_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,2] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	14	16
+TcCounterSucce	TC_Counter_Successful_Start_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,3] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	15	16
+TcCounterFaile	TC_Counter_Failed_Start_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,4] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	16	16
+TcCounterSucce	TC_Counter_Successful_Comp_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,7] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	17	16
+TcCounterFaile	TC_Counter_Failed_Comp_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter the TM[1,8] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	18	16
+TcCntDiscarded	TC_Counter_Discarded	Counter for the TCs that are Discarded (APID does not match known list).	85	16
+DetInfEvRepCnt	Detected_Info_Event_Report_Counter	Accumulated number of detected informative event reports, even the events whose generation status is disabled.	86	16
+DetLowEvRepCnt	Detected_Low_Event_Report_Counter	Accumulated number of detected low severity event reports, even the events whose generation status is disabled.	87	16
+DetMedEvRepCnt	Detected_Medium_Event_Report_Counter	Accumulated number of detected medium severity event reports, even the events whose generation status is disabled.	88	16
+DetHiEvRepCnt	Detected_High_Event_Report_Counter	Accumulated number of detected high severity event reports, even the events whose generation status is disabled.	89	16
+GenInfEvRepCnt	Generated_Info_Event_Report_Counter	Accumulated number of generated informative event reports (with generation status enabled at the time of the generation).	90	16
+GenLowEvRepCnt	Generated_Low_Event_Report_Counter	Accumulated number of generated low severity event reports (with generation status enabled at the time of the generation).	91	16
+GenMedEvRepCnt	Generated_Medium_Event_Report_Counter	Accumulated number of generated medium severity event reports (with generation status enabled at the time of the generation).	92	16
+GenHiEvRepCnt	Generated_High_Event_Report_Counter	Accumulated number of generated high severity event reports (with generation status enabled at the time of the generation).	93	16
+LaGeInEvReId	Last_Generated_Info_Event_Report_ID	Event definition identifier of the last generated info event report.	94	32
+LaGeLoEvReId	Last_Generated_Low_Event_Report_ID	Event definition identifier of the last generated low event report.	95	32
+LaGeMeEvReId	Last_Generated_Medium_Event_Report_ID	Event definition identifier of the last generated medium event report.	96	32
+LastGenHiEvRepId	Last_Generated_High_Event_Report_ID	Event definition identifier of the last generated high event report.	97	32
+LaGeInEvReTi	Last_Generated_Info_Event_Report_Time	Generation time of the last info event report.	98	56
+LaGeLoEvReTi	Last_Generated_Low_Event_Report_Time	Generation time of the last low event report.	99	56
+LaGeMeEvReTi	Last_Generated_Medium_Event_Report_Time	Generation time of the last medium event report.	100	56
+LaGeHiEvReTi	Last_Generated_High_Event_Report_Time	Generation time of the last high event report.	101	56
+DisInfEvDefsCnt	Disabled_Info_Event_Definitions_Counter	"Number of informative event definitions whose event report generation status is ""disabled""."	102	16
+DisLowEvDefsCnt	Disabled_Low_Event_Definitions_Counter	"Number of low event definitions whose event report generation status is ""disabled""."	103	16
+DisMedEvDefsCnt	Disabled_Medium_Event_Definitions_Counter	"Number of medium event definitions whose event report generation status is ""disabled""."	104	16
+DisHiEvDefsCnt	Disabled_High_Event_Definitions_Counter	"Number of high event definitions whose event report generation status is ""disabled""."	105	16
+MaxTransRepDelay	Max_Trans_Rep_Delay	Maximum transition reporting delay.	106	16
+NbPmonsTriggered	Nb_PMONs_Triggered	Total Number of PMONs that triggered per APID.	107	8
+NbPmonsEnabled	Nb_PMONs_Enabled	Total Number of PMONs that are enabled per APID.	108	8
+NbAvEnPmLi	Nb_Avail_Entr_PMON_List	Number of remaining available entries in the parameter monitoring definition list.	109	8
+PmonFnStat	PMON_Function_Status	PMON Function Status.	110	8
+NbFmonsTriggered	Nb_FMONs_Triggered	Total Number of FMONs that triggered per APID.	111	8
+NbFmonsEnabled	Nb_FMONs_Enabled	Total Number of FMONs that are enabled per APID.	112	8
+NbAvEnFmLi	Nb_Avail_Entr_FMON_List	Number of remaining available entries in the functional monitoring definition list.	113	8
+FmonFnStat	FMON_Function_Status	FMON Function Status.	114	8
+NrSubSchedules	Nr_Sub_Schedules	Current Number of Subchedules.	115	16
+NrActivities	Nr_Activities	Current Number of Activities Scheduled in time-based schedule.	116	16
+SchedulerFnStat	Scheduler_Function_Status	Time Based Schedule execution function status.	117	8
+SubschedulesStat	Subschedules_Status	"Time Based Sub-Schedule execution function status. 
+    This represents a list that contains all the subschedules supported by the mission, if the subchedule
+    is enabled the bit in list shall be 1 otherwise the value 0 corresponds to status disabled. The size
+    of the list is 8-byte aligned."	118	104
+NrAvEn	Nr_Available_Entries	The total number of available free entries in the time based schedule.	119	16
+NrPeAc	Nr_Pending_Activities	The total number of pending TCs in the time based schedule.	120	16
+TiTaOfLaAc	Time_Tag_of_Last_Activity	The execution time-tag of the latest TC in the time-based schedule to be released.	121	56
+TiTaOfNeAc	Time_Tag_Of_Next_Activity	The execution time-tag of the next TC to be released.	122	56
+FswVersion	FSW_Version	Actual version of the OBC-ASW.	123	8
+FswSubVersion	FSW_Sub_Version	Actual subversion of the OBC-ASW.	124	8
+FswSubSubVersion	FSW_Sub_Sub_Version	Actual subsubversion of the OBC-ASW.	125	8
+GitCommitHash	Git_Commit_Hash	Git commit short hash.	126	64
+BinaryBuildDate	Binary_Build_Date	Binary Build Date	127	56
+MemScrubStat	Memory_Scrubbing_Status	Status of each memory which scrubbing can be contolled, its enabled or disabled scrubbing status	129	16
+FlagDumpInProg	Flag_Dump_In_Progress	Flag signalling that at least one dump is in-progress.	130	8
+GrUpSt	GROUND_UPLINK_STATE	Ground Status of linkstate for uplink, true in case of a frozen link.	131	8
+GrDoSt	GROUND_DOWNLINK_STATE	Ground Status of linkstate for downlink, true in case of a frozen link.	132	8
+ObcUplinkState	OBC_UPLINK_STATE	Obc Status of linkstate for uplink, true in case of a frozen link.	133	8
+ObcDownlinkState	OBC_DOWNLINK_STATE	Obc Status of linkstate for downlink, true in case of a frozen link.	134	8
+VoMeScPe	Volatile_Memory_Scrubbing_Period	Amount of time until the volatile memory can be scrubbed.	135	16
+VoMeScSi	Volatile_Memory_Scrubbing_Size	Size of memory block to be scrubbed, in 32-bit words.	136	16
+NbTcSeqsAborted	Nb_TC_Sequences_Aborted	The number of TC Sequences aborted.	137	16
+NbTcSeqsCurrExec	Nb_TC_Sequences_Curr_Exec	The number of TC Sequences currently executing.	138	16
+NbTcSeqsInQ	Nb_TC_Sequences_in_Queue	The number of TC Sequences currently queued for execution.	139	16
+NbTcSeqsExe	Nb_TC_Sequences_Executed	The number of TC Sequences executed.	140	16
+ReqSeqConfig	Req_Seq_Config	The list of request sequence identifiers and associated execution status of the loaded request sequences.	141	64
+EvtActFnStat	Evt_Act_Function_Status	Event Action Function Status.	142	8
+NbEvActionDefs	Nb_Event_Action_Definitions	Total Number of Event Action Definitions that are enabled per APID.	143	8
+NbEvAcCuEx	Nb_Event_Actions_Curren_Executing	Total number of event-actions currently executing.	144	8
+FiSyUnMe	File_System_Unalloc_Mem	Available unallocated memory in bytes.	145	32
+CopyOperInProg	Copy_Oper_In_Progress	Flag signalling that at least one file copy operation is in-progress.	146	8
+CoOpOnHo	Copy_Operation_On_Hold	Flag signalling that at least one file copy operation is on-hold.	147	8
+DeMaFiSi	Default_Max_File_Size	Default value for the maximum file size.	148	32
+TimeRepGenRate	Time_Report_Gen_Rate	Time Report Generation Rate.	149	16
+TcCounterForwa	TC_Counter_Forward_APID_GNC_OBC_A_PUS	Acknowledgement counter of the forwarding of APID_GNC_OBC_A_PUS APID.	150	16
+TcCounterForwa	TC_Counter_Forward_APID_GNC_OBC_B_PUS	Acknowledgement counter of the forwarding of APID_GNC_OBC_B_PUS APID.	151	16
+TcCoFoApWaAPu	TC_Counter_Forward_APID_WAC_A_PUS	Acknowledgement counter of the forwarding of APID_WAC_A_PUS APID.	152	16
+TcCoFoApWaBPu	TC_Counter_Forward_APID_WAC_B_PUS	Acknowledgement counter of the forwarding of APID_WAC_B_PUS APID.	153	16
+TcCoFoApNaAPu	TC_Counter_Forward_APID_NAC_A_PUS	Acknowledgement counter of the forwarding of APID_NAC_A_PUS APID.	154	16
+TcCoFoApNaBPu	TC_Counter_Forward_APID_NAC_B_PUS	Acknowledgement counter of the forwarding of APID_NAC_B_PUS APID.	155	16
+TcCoFoApNaCPu	TC_Counter_Forward_APID_NAC_C_PUS	Acknowledgement counter of the forwarding of APID_NAC_C_PUS APID.	156	16
+TcCounterForwa	TC_Counter_Forward_APID_GNC_OBC_A_PDU	Acknowledgement counter of the forwarding of APID_GNC_OBC_A_PDU APID.	159	16
+TcCounterForwa	TC_Counter_Forward_APID_GNC_OBC_B_PDU	Acknowledgement counter of the forwarding of APID_GNC_OBC_B_PDU APID.	160	16
+TmCntApidTime	TM_Counter_APID_Time	Acknowledgement counter for TM with APID_Time APID.	162	16
+TmCoApMiObAPu	TM_Counter_APID_MISSION_OBC_A_PUS	Acknowledgement counter for TM with APID_MISSION_OBC_A_PUS APID.	163	16
+TmCoApMiObBPu	TM_Counter_APID_MISSION_OBC_B_PUS	Acknowledgement counter for TM with APID_MISSION_OBC_B_PUS APID.	164	16
+TmCoApGnObAPu	TM_Counter_APID_GNC_OBC_A_PUS	Acknowledgement counter for TM with APID_GNC_OBC_A_PUS APID.	165	16
+TmCoApGnObBPu	TM_Counter_APID_GNC_OBC_B_PUS	Acknowledgement counter for TM with APID_GNC_OBC_B_PUS APID.	166	16
+TmCntApidWacAPus	TM_Counter_APID_WAC_A_PUS	Acknowledgement counter for TM with APID_WAC_A_PUS APID.	167	16
+TmCntApidWacBPus	TM_Counter_APID_WAC_B_PUS	Acknowledgement counter for TM with APID_WAC_B_PUS APID.	168	16
+TmCntApidNacAPus	TM_Counter_APID_NAC_A_PUS	Acknowledgement counter for TM with APID_NAC_A_PUS APID.	169	16
+TmCntApidNacBPus	TM_Counter_APID_NAC_B_PUS	Acknowledgement counter for TM with APID_NAC_B_PUS APID.	170	16
+TmCntApidNacCPus	TM_Counter_APID_NAC_C_PUS	Acknowledgement counter for TM with APID_NAC_C_PUS APID.	171	16
+TmCoApMiObAPd	TM_Counter_APID_MISSION_OBC_A_PDU	Acknowledgement counter for TM with APID_MISSION_OBC_A_PDU APID.	172	16
+TmCoApMiObBPd	TM_Counter_APID_MISSION_OBC_B_PDU	Acknowledgement counter for TM with APID_MISSION_OBC_B_PDU APID.	173	16
+TmCoApGnObAPd	TM_Counter_APID_GNC_OBC_A_PDU	Acknowledgement counter for TM with APID_GNC_OBC_A_PDU APID.	174	16
+TmCoApGnObBPd	TM_Counter_APID_GNC_OBC_B_PDU	Acknowledgement counter for TM with APID_GNC_OBC_B_PDU APID.	175	16
+TmCntDiscarded	TM_Counter_Discarded	Counter for the TMs that are Discarded (APID does not match known list).	176	16
+PerfLogEnFlag	Performance_Logging_Enable_Flag	Performance Logging Enable Flag.	4095	8

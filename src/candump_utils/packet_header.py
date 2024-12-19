@@ -3,6 +3,7 @@
 from typing import Any, Optional
 
 from lib_utils.addr_apid import lookup_value
+from lib_utils.endianness import convert_big_to_little_endian
 
 
 def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[str, Any]]:
@@ -52,10 +53,15 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
         if len(parts) < 3:
             return None
 
-        bytes_data = int(parts[3].replace(" ", "").replace("\n", ""), 2)
+        binary_data = convert_big_to_little_endian(parts[3])
 
-        if len(line.replace(" ", "").replace("\n", "")) < 8**2:
+        binary_data = binary_data.replace(" ", "").replace("\n", "")
+
+        if len(binary_data) < 8 * 2:  # Ensure at least 8 bytes (64 bits) for processing
             return None
+
+        # Convert binary string to integer
+        bytes_data = int(binary_data, 2)
 
         prefix = bytes_data >> 56  # 8 bits
         version_number = (bytes_data >> 53) & 0x7  # 3 bits
@@ -85,7 +91,7 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
             "apid": apid,
             "apid_sys": lookup_value("apid", apid),
             "grouping_flags": grouping_flags,
-            "Sequence flag": lookup_value("sequence flags", grouping_flags),
+            "Sequence flag": lookup_value("sequence_flags", grouping_flags),
             "source_sequence_count": source_sequence_count,
             "packet_length": packet_length,
             "counter": counter,
@@ -95,7 +101,7 @@ def process_first_message_data(line: str, doplot: bool = True) -> Optional[dict[
         if doplot:
             print(
                 f"Packet Header: (type: {str_type}, Apid: {apid}({lookup_value('apid', apid)}), "
-                f"Sequence flag: {lookup_value('sequence flags', grouping_flags)}, "
+                f"Sequence flag: {lookup_value('sequence_flags', grouping_flags)}, "
                 f"source_sequence_count: {source_sequence_count}, packet_length: {packet_length}, "
                 f"counter: {counter})"
             )

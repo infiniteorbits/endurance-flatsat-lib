@@ -1,0 +1,111 @@
+Name	Brief	ID	Size (Bits)	Type	PTC	PFC	Default Value at Startup	Minimum Valid Value	Maximum Valid Value
+TC_Counter_Successful_Acceptance_APID_Time	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	1	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Acceptance_APID_Time	Acknowledgement counter of the TM[1,2] for APID_Time APID and it will be available for housekeeping.	2	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Start_Execution_APID_Time	Acknowledgement counter of the TM[1,3] for APID_Time APID and it will be available for housekeeping.	3	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Start_Execution_APID_Time	Acknowledgement counter of the TM[1,4] for APID_Time APID and it will be available for housekeeping.	4	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Comp_Execution_APID_Time	Acknowledgement counter of the TM[1,7] for APID_Time APID and it will be available for housekeeping.	5	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Comp_Execution_APID_Time	Acknowledgement counter the TM[1,8] for APID_Time APID and it will be available for housekeeping.	6	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Acceptance_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	7	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Acceptance_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,2] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	8	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Start_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,3] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	9	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Start_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,4] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	10	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Comp_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter of the TM[1,7] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	11	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Comp_Execution_APID_MISSION_OBC_A_PUS	Acknowledgement counter the TM[1,8] for APID_MISSION_OBC_A_PUS APID and it will be available for housekeeping.	12	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Acceptance_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,1] for  APID and it will be available for housekeeping.	13	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Acceptance_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,2] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	14	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Start_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,3] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	15	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Start_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,4] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	16	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Successful_Comp_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter of the TM[1,7] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	17	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Failed_Comp_Execution_APID_MISSION_OBC_B_PUS	Acknowledgement counter the TM[1,8] for APID_MISSION_OBC_B_PUS APID and it will be available for housekeeping.	18	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Discarded	Counter for the TCs that are Discarded (APID does not match known list).	85	16	UNSIGNED_INTEGER	3	12	0		
+Detected_Info_Event_Report_Counter	Accumulated number of detected informative event reports, even the events whose generation status is disabled.	86	16	UNSIGNED_INTEGER	3	12	0		
+Detected_Low_Event_Report_Counter	Accumulated number of detected low severity event reports, even the events whose generation status is disabled.	87	16	UNSIGNED_INTEGER	3	12	0		
+Detected_Medium_Event_Report_Counter	Accumulated number of detected medium severity event reports, even the events whose generation status is disabled.	88	16	UNSIGNED_INTEGER	3	12	0		
+Detected_High_Event_Report_Counter	Accumulated number of detected high severity event reports, even the events whose generation status is disabled.	89	16	UNSIGNED_INTEGER	3	12	0		
+Generated_Info_Event_Report_Counter	Accumulated number of generated informative event reports (with generation status enabled at the time of the generation).	90	16	UNSIGNED_INTEGER	3	12	0		
+Generated_Low_Event_Report_Counter	Accumulated number of generated low severity event reports (with generation status enabled at the time of the generation).	91	16	UNSIGNED_INTEGER	3	12	0		
+Generated_Medium_Event_Report_Counter	Accumulated number of generated medium severity event reports (with generation status enabled at the time of the generation).	92	16	UNSIGNED_INTEGER	3	12	0		
+Generated_High_Event_Report_Counter	Accumulated number of generated high severity event reports (with generation status enabled at the time of the generation).	93	16	UNSIGNED_INTEGER	3	12	0		
+Last_Generated_Info_Event_Report_ID	Event definition identifier of the last generated info event report.	94	32	UNSIGNED_INTEGER	3	14	0		
+Last_Generated_Low_Event_Report_ID	Event definition identifier of the last generated low event report.	95	32	UNSIGNED_INTEGER	3	14	0		
+Last_Generated_Medium_Event_Report_ID	Event definition identifier of the last generated medium event report.	96	32	UNSIGNED_INTEGER	3	14	0		
+Last_Generated_High_Event_Report_ID	Event definition identifier of the last generated high event report.	97	32	UNSIGNED_INTEGER	3	14	0		
+Last_Generated_Info_Event_Report_Time	Generation time of the last info event report.	98	56	ABSOLUTE_TIME	9	18	0		
+Last_Generated_Low_Event_Report_Time	Generation time of the last low event report.	99	56	ABSOLUTE_TIME	9	18	0		
+Last_Generated_Medium_Event_Report_Time	Generation time of the last medium event report.	100	56	ABSOLUTE_TIME	9	18	0		
+Last_Generated_High_Event_Report_Time	Generation time of the last high event report.	101	56	ABSOLUTE_TIME	9	18	0		
+Disabled_Info_Event_Definitions_Counter	"Number of informative event definitions whose event report generation status is ""disabled""."	102	16	UNSIGNED_INTEGER	3	12	0		
+Disabled_Low_Event_Definitions_Counter	"Number of low event definitions whose event report generation status is ""disabled""."	103	16	UNSIGNED_INTEGER	3	12	0		
+Disabled_Medium_Event_Definitions_Counter	"Number of medium event definitions whose event report generation status is ""disabled""."	104	16	UNSIGNED_INTEGER	3	12	0		
+Disabled_High_Event_Definitions_Counter	"Number of high event definitions whose event report generation status is ""disabled""."	105	16	UNSIGNED_INTEGER	3	12	0		
+Max_Trans_Rep_Delay	Maximum transition reporting delay.	106	16	UNSIGNED_INTEGER	3	12	0	1	65535
+Nb_PMONs_Triggered	Total Number of PMONs that triggered per APID.	107	8	UNSIGNED_INTEGER	3	4	0	1	200
+Nb_PMONs_Enabled	Total Number of PMONs that are enabled per APID.	108	8	UNSIGNED_INTEGER	3	4	0	10	200
+Nb_Avail_Entr_PMON_List	Number of remaining available entries in the parameter monitoring definition list.	109	8	UNSIGNED_INTEGER	3	4	0	0	200
+PMON_Function_Status	PMON Function Status.	110	8	BOOLEAN	1	8	0		
+Nb_FMONs_Triggered	Total Number of FMONs that triggered per APID.	111	8	UNSIGNED_INTEGER	3	4	0	1	10
+Nb_FMONs_Enabled	Total Number of FMONs that are enabled per APID.	112	8	UNSIGNED_INTEGER	3	4	0	1	10
+Nb_Avail_Entr_FMON_List	Number of remaining available entries in the functional monitoring definition list.	113	8	UNSIGNED_INTEGER	3	4	0	0	10
+FMON_Function_Status	FMON Function Status.	114	8	BOOLEAN	1	8	0		
+Nr_Sub_Schedules	Current Number of Subchedules.	115	16	UNSIGNED_INTEGER	3	12	0	0	100
+Nr_Activities	Current Number of Activities Scheduled in time-based schedule.	116	16	UNSIGNED_INTEGER	3	12	0	0	6000
+Scheduler_Function_Status	Time Based Schedule execution function status.	117	8	BOOLEAN	1	8	0		
+Subschedules_Status	"Time Based Sub-Schedule execution function status. 
+    This represents a list that contains all the subschedules supported by the mission, if the subchedule
+    is enabled the bit in list shall be 1 otherwise the value 0 corresponds to status disabled. The size
+    of the list is 8-byte aligned."	118	104	BOOLEAN	1	104	0		
+Nr_Available_Entries	The total number of available free entries in the time based schedule.	119	16	UNSIGNED_INTEGER	3	12	0	0	6000
+Nr_Pending_Activities	The total number of pending TCs in the time based schedule.	120	16	UNSIGNED_INTEGER	3	12	0	0	5995
+Time_Tag_of_Last_Activity	The execution time-tag of the latest TC in the time-based schedule to be released.	121	56	ABSOLUTE_TIME	9	18	0		
+Time_Tag_Of_Next_Activity	The execution time-tag of the next TC to be released.	122	56	ABSOLUTE_TIME	9	18	0		
+FSW_Version	Actual version of the OBC-ASW.	123	8	UNSIGNED_INTEGER	3	4	3		
+FSW_Sub_Version	Actual subversion of the OBC-ASW.	124	8	UNSIGNED_INTEGER	3	4	1		
+FSW_Sub_Sub_Version	Actual subsubversion of the OBC-ASW.	125	8	UNSIGNED_INTEGER	3	4	0		
+Git_Commit_Hash	Git commit short hash.	126	64	UNSIGNED_INTEGER	3	16	0		
+Binary_Build_Date	Binary Build Date	127	56	ABSOLUTE_TIME	9	18	0		
+Memory_Scrubbing_Status	Status of each memory which scrubbing can be contolled, its enabled or disabled scrubbing status	129	16	BIT_STRING	6	0	0		
+Flag_Dump_In_Progress	Flag signalling that at least one dump is in-progress.	130	8	BOOLEAN	1	8	0	0	1
+GROUND_UPLINK_STATE	Ground Status of linkstate for uplink, true in case of a frozen link.	131	8	BOOLEAN	1	8	0	0	1
+GROUND_DOWNLINK_STATE	Ground Status of linkstate for downlink, true in case of a frozen link.	132	8	BOOLEAN	1	8	0	0	1
+OBC_UPLINK_STATE	Obc Status of linkstate for uplink, true in case of a frozen link.	133	8	BOOLEAN	1	8	0	0	1
+OBC_DOWNLINK_STATE	Obc Status of linkstate for downlink, true in case of a frozen link.	134	8	BOOLEAN	1	8	0	0	1
+Volatile_Memory_Scrubbing_Period	Amount of time until the volatile memory can be scrubbed.	135	16	UNSIGNED_INTEGER	3	12	60	60	360
+Volatile_Memory_Scrubbing_Size	Size of memory block to be scrubbed, in 32-bit words.	136	16	UNSIGNED_INTEGER	3	12	1024		
+Nb_TC_Sequences_Aborted	The number of TC Sequences aborted.	137	16	UNSIGNED_INTEGER	3	12	0		
+Nb_TC_Sequences_Curr_Exec	The number of TC Sequences currently executing.	138	16	UNSIGNED_INTEGER	3	12	0	0	20
+Nb_TC_Sequences_in_Queue	The number of TC Sequences currently queued for execution.	139	16	UNSIGNED_INTEGER	3	12	0	0	4
+Nb_TC_Sequences_Executed	The number of TC Sequences executed.	140	16	UNSIGNED_INTEGER	3	12	0		
+Req_Seq_Config	The list of request sequence identifiers and associated execution status of the loaded request sequences.	141	64	UNSIGNED_INTEGER	3	16	0		
+Evt_Act_Function_Status	Event Action Function Status.	142	8	BOOLEAN	1	8	0		
+Nb_Event_Action_Definitions	Total Number of Event Action Definitions that are enabled per APID.	143	8	UNSIGNED_INTEGER	3	4	0	1	200
+Nb_Event_Actions_Curren_Executing	Total number of event-actions currently executing.	144	8	UNSIGNED_INTEGER	3	4	0	0	200
+File_System_Unalloc_Mem	Available unallocated memory in bytes.	145	32	UNSIGNED_INTEGER	3	14	0		
+Copy_Oper_In_Progress	Flag signalling that at least one file copy operation is in-progress.	146	8	BOOLEAN	1	8	0	0	1
+Copy_Operation_On_Hold	Flag signalling that at least one file copy operation is on-hold.	147	8	BOOLEAN	1	8	0	0	1
+Default_Max_File_Size	Default value for the maximum file size.	148	32	UNSIGNED_INTEGER	3	14	0	1	4294967295
+Time_Report_Gen_Rate	Time Report Generation Rate.	149	16	UNSIGNED_INTEGER	3	12	0	1	256
+TC_Counter_Forward_APID_GNC_OBC_A_PUS	Acknowledgement counter of the forwarding of APID_GNC_OBC_A_PUS APID.	150	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_GNC_OBC_B_PUS	Acknowledgement counter of the forwarding of APID_GNC_OBC_B_PUS APID.	151	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_WAC_A_PUS	Acknowledgement counter of the forwarding of APID_WAC_A_PUS APID.	152	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_WAC_B_PUS	Acknowledgement counter of the forwarding of APID_WAC_B_PUS APID.	153	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_NAC_A_PUS	Acknowledgement counter of the forwarding of APID_NAC_A_PUS APID.	154	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_NAC_B_PUS	Acknowledgement counter of the forwarding of APID_NAC_B_PUS APID.	155	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_NAC_C_PUS	Acknowledgement counter of the forwarding of APID_NAC_C_PUS APID.	156	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_GNC_OBC_A_PDU	Acknowledgement counter of the forwarding of APID_GNC_OBC_A_PDU APID.	159	16	UNSIGNED_INTEGER	3	12	0		
+TC_Counter_Forward_APID_GNC_OBC_B_PDU	Acknowledgement counter of the forwarding of APID_GNC_OBC_B_PDU APID.	160	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_Time	Acknowledgement counter for TM with APID_Time APID.	162	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_MISSION_OBC_A_PUS	Acknowledgement counter for TM with APID_MISSION_OBC_A_PUS APID.	163	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_MISSION_OBC_B_PUS	Acknowledgement counter for TM with APID_MISSION_OBC_B_PUS APID.	164	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_GNC_OBC_A_PUS	Acknowledgement counter for TM with APID_GNC_OBC_A_PUS APID.	165	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_GNC_OBC_B_PUS	Acknowledgement counter for TM with APID_GNC_OBC_B_PUS APID.	166	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_WAC_A_PUS	Acknowledgement counter for TM with APID_WAC_A_PUS APID.	167	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_WAC_B_PUS	Acknowledgement counter for TM with APID_WAC_B_PUS APID.	168	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_NAC_A_PUS	Acknowledgement counter for TM with APID_NAC_A_PUS APID.	169	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_NAC_B_PUS	Acknowledgement counter for TM with APID_NAC_B_PUS APID.	170	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_NAC_C_PUS	Acknowledgement counter for TM with APID_NAC_C_PUS APID.	171	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_MISSION_OBC_A_PDU	Acknowledgement counter for TM with APID_MISSION_OBC_A_PDU APID.	172	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_MISSION_OBC_B_PDU	Acknowledgement counter for TM with APID_MISSION_OBC_B_PDU APID.	173	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_GNC_OBC_A_PDU	Acknowledgement counter for TM with APID_GNC_OBC_A_PDU APID.	174	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_APID_GNC_OBC_B_PDU	Acknowledgement counter for TM with APID_GNC_OBC_B_PDU APID.	175	16	UNSIGNED_INTEGER	3	12	0		
+TM_Counter_Discarded	Counter for the TMs that are Discarded (APID does not match known list).	176	16	UNSIGNED_INTEGER	3	12	0		
+Performance_Logging_Enable_Flag	Performance Logging Enable Flag.	4095	8	BOOLEAN	1	8	0	0	1

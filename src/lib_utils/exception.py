@@ -14,3 +14,9 @@ class ApidParameterError(Exception):
     """
     Raised in addr_apid when the Apid is not found
     """
+
+
+class IssuingCommandError(Exception):
+    """
+    Raised when issuing a command is not possible
+    """
